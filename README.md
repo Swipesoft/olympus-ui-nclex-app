@@ -1,3 +1,5 @@
+### Page Structure 
+
 | Page Name         | Purpose                                                                 |
 |-------------------|-------------------------------------------------------------------------|
 | HomePage          | Landing page with overview, features, and call-to-action                |
@@ -10,3 +12,21 @@
 | ReviewPage        | Review completed quizzes with explanations and stats                    |
 | ProfilePage       | User profile settings and preferences                                   |
 | SubscriptionPage  | Plans, pricing, and payment integration                                 |
+
+
+### Resources
+
+##### 🚀 Next.js Starter Repo
+
+Check out the [nextjs-starter-repo](https://github.com/nextjs/saas-starter/tree/main) — a powerful SaaS starter template built with Next.js.
+
+It includes:
+
+- App Router (Next.js 13+)
+- Tailwind CSS
+- Authentication
+- Stripe integration
+- Dashboard layout
+- TypeScript support
+
+Perfect for launching modern web apps quickly and cleanly.
