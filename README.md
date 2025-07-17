@@ -24,9 +24,8 @@
 
 ### Resources
 
-##### 🚀 Next.js Starter Repo
-
-Check out the [nextjs-starter-repo](https://github.com/nextjs/saas-starter/tree/main) — a powerful SaaS starter template built with Next.js.
+### 🚀 [nextjs-starter-repo](https://github.com/nextjs/saas-starter/tree/main) 
+A powerful SaaS starter template built with Next.js.
 
 It includes:
 
