@@ -30,3 +30,14 @@ It includes:
 - TypeScript support
 
 Perfect for launching modern web apps quickly and cleanly.
+
+---
+
+### 🎨 [landing-page-template](https://github.com/mohitdarmal/landing-page-nextjs15-with-tailwindcss-dark-light-theme/tree/main)
+A sleek landing page built with Next.js 15 and Tailwind CSS. Features:
+
+- Dark/light theme toggle
+- Responsive design
+- Clean layout and animations
+- Tailwind CSS integration
+- Ideal for product or portfolio landing pages
