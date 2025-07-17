@@ -14,6 +14,14 @@
 | SubscriptionPage  | Plans, pricing, and payment integration                                 |
 
 
+### Component-to-Page Code Organisation
+- The components folder is a general directory for all UI elements in the application 
+- There is a `Helper` and `Hoc` folder for holding generalised config information/properties 
+- Each app route in the `app/` folder has a sub-folder in the components folder 
+     - components/Home = components for the homepage 
+     - components/Login = components for the loginpage 
+- The `outline.tsx` organises/orchestrates the DOM relationships for all components of a page. 
+
 ### Resources
 
 ##### 🚀 Next.js Starter Repo
