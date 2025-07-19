@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import Link  from "next/link";
 import { StaticImageData } from "next/image";
 import hero from "@/assets/images/hero.png";
 
@@ -26,8 +28,8 @@ const HeroBanner = ({ heroImage }: Props)=> {
           {/* Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row w-fit sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
             {/* 1st Button */}
-            <a
-              href="#_"
+            <Link 
+              href="/login"
               className="relative overflow-hidden px-10 py-3 font-medium text-white transition duration-300 bg-blue-600 rounded-md hover:bg-blue-500 ease"
             >
               <span className="absolute bottom-0 left-0 h-full -ml-2">
@@ -59,9 +61,9 @@ const HeroBanner = ({ heroImage }: Props)=> {
                 </svg>
               </span>
               <span className="relative">Buy Now</span>
-            </a>
+            </Link >
              {/* 2nd Button */}
-             <a
+             <Link 
               href="#_"
               className="relative overflow-hidden px-10 py-3 font-medium text-white transition duration-300 bg-green-600 rounded-md hover:bg-green-500 ease"
             >
@@ -94,7 +96,7 @@ const HeroBanner = ({ heroImage }: Props)=> {
                 </svg>
               </span>
               <span className="relative">Explore More</span>
-            </a>
+            </Link >
           </div>
         </div>
         {/* Image Content */}
