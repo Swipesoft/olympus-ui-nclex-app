@@ -16,14 +16,17 @@ const HeroBanner = ({ heroImage }: Props)=> {
         {/* Text Content */}
         <div data-aos="fade-up">
           {/* Heading */}
+          {/* Superior sound, tangible quality */}
           <h1 className="text-3xl md:text-4xl text-white lg:text-5xl mt-6 mb-6 font-bold leading-[2.5rem] md:leading-[3.5rem]">
-            Superior sound, tanginle quality
+            Practice the NCLEX, Test with confidence
           </h1>
           {/* Description */}
           <p className="text-xs sm:text-sm md:text-base font-medium text-gray-300">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-            ever since the 1500s,
+            Your gateway to success on the NCLEX exam. Our expertly designed NCLEX Qbank 
+            delivers challenging practice questions, detailed rationales, and personalised
+            analytics to improve your exam readiness. 
+
+            
           </p>
           {/* Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row w-fit sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -60,11 +63,11 @@ const HeroBanner = ({ heroImage }: Props)=> {
                   ></path>
                 </svg>
               </span>
-              <span className="relative">Buy Now</span>
+              <span className="relative">Student Login</span>
             </Link >
              {/* 2nd Button */}
              <Link 
-              href="#_"
+              href="/register"
               className="relative overflow-hidden px-10 py-3 font-medium text-white transition duration-300 bg-green-600 rounded-md hover:bg-green-500 ease"
             >
               <span className="absolute bottom-0 left-0 h-full -ml-2">
@@ -95,7 +98,7 @@ const HeroBanner = ({ heroImage }: Props)=> {
                   ></path>
                 </svg>
               </span>
-              <span className="relative">Explore More</span>
+              <span className="relative">New Student</span>
             </Link >
           </div>
         </div>

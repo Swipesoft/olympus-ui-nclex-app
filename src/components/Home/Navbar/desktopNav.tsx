@@ -34,7 +34,7 @@ useEffect(() => {
       <div className={`${navBg ? "bg-pink-700 shadow-md" : "fixed"} transition-all duration-200 h-[12vh] z-[100] fixed w-full`}>
         <div className="flex items-center h-full justify-between sm:w-[80%] w-[90%] mx-auto">
           {/* Logo */}
-          <div className="text-white font-bold text-2xl sm:text-3xl">LOGO</div>
+          <div className="text-white font-bold text-2xl sm:text-3xl">Olympus NCLEX</div>
           {/* NavLinks */}
           <div className="hidden lg:flex items-center space-x-10">
             {navLinks.map((item) => {
@@ -51,7 +51,8 @@ useEffect(() => {
             })}
           </div>
           {/* Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4"> 
+            {/*
             <a href="#_" className="relative inline-block text-lg group">
               <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-grey-900 rounded-lg group-hover:text-white">
                 <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-green-50"></span>
@@ -63,6 +64,7 @@ useEffect(() => {
                 data-rounded="rounded-lg"
               ></span>
             </a>
+            */}
             {/* Theme Switch button */}
             <ThemeToggle />
             {/* Burger Menu */}
