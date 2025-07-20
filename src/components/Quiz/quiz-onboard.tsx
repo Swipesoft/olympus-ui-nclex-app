@@ -27,7 +27,7 @@ export default function QuizOnboardPage({ onStart }: { onStart: () => void }) {
           </p>
         </header>
 
-        <Card className="max-w-md mx-auto">
+        <Card className="max-w-2xl mx-auto">
           <CardHeader>
             <CardTitle className="text-2xl">Ready to Start?</CardTitle>
             <CardDescription>
