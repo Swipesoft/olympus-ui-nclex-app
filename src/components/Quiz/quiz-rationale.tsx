@@ -12,6 +12,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { nclexQuestions } from '@/constant/constants';
+import MarkdownRenderer from './markdown-renderer'; 
 
 interface Props {
   onSubmit: (answers: number[], timeTaken: number) => void;
@@ -104,7 +105,9 @@ export default function MCQRationalePage({ onSubmit, onExit }: Props) {
             {showExplanation && (
               <div className="mt-4 pt-4 border-t">
                 <h4 className="font-semibold mb-1">Rationale</h4>
-                <p className="text-sm text-gray-700">{question.explanation}</p>
+                {/*If displaying HTML as rationale directly instead of Markdown */}
+                {/* <p className="text-sm text-gray-700">{question.explanation}</p> */} 
+                <MarkdownRenderer content={question.explanation} />
               </div>
             )}
           </CardContent>
