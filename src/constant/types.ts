@@ -9,3 +9,12 @@ export interface QuizResult {
     isCorrect: boolean;
   }>;
 }
+
+
+export interface NclexQuestion {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string; // Added for rationale 
+}

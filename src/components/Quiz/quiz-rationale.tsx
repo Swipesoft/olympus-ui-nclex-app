@@ -13,17 +13,19 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { nclexQuestions } from '@/constant/constants';
 
-// Define the interface for the quiz question
 interface Props {
   onSubmit: (answers: number[], timeTaken: number) => void;
   onExit: () => void;
 }
 
-export default function MCQPage({ onSubmit, onExit }: Props) {
+export default function MCQRationalePage({ onSubmit, onExit }: Props) {
+  /* ------------ state ------------ */
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
+  const [showExplanation, setShowExplanation] = useState(false); // NEW
   const [startTime] = useState(Date.now());
 
+  /* ------------ helpers ------------ */
   const handleAnswerSelect = (answerIndex: number) => {
     const updated = [...selectedAnswers];
     updated[currentQuestion] = answerIndex;
@@ -31,8 +33,18 @@ export default function MCQPage({ onSubmit, onExit }: Props) {
   };
 
   const nextQuestion = () => {
+    if (!showExplanation) {
+      // first click → reveal explanation
+      setShowExplanation(true);
+      return;
+    }
+
+    // second click → move on / finish
+    setShowExplanation(false);
     if (currentQuestion < nclexQuestions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion((c) => c + 1);
+    } else {
+      submit();
     }
   };
 
@@ -41,9 +53,11 @@ export default function MCQPage({ onSubmit, onExit }: Props) {
     onSubmit(selectedAnswers, timeTaken);
   };
 
+  /* ------------ derived ------------ */
   const question = nclexQuestions[currentQuestion];
   const progress = ((currentQuestion + 1) / nclexQuestions.length) * 100;
 
+  /* ------------ render ------------ */
   return (
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-2xl mx-auto pt-8">
@@ -68,10 +82,13 @@ export default function MCQPage({ onSubmit, onExit }: Props) {
           <CardHeader>
             <CardTitle className="text-lg">{question.question}</CardTitle>
           </CardHeader>
+
           <CardContent>
+            {/* OPTIONS – always visible */}
             <RadioGroup
               value={selectedAnswers[currentQuestion]?.toString() || ''}
               onValueChange={(v) => handleAnswerSelect(Number(v))}
+              disabled={showExplanation} // optionally freeze the radio group after submit
             >
               {question.options.map((opt, i) => (
                 <div key={i} className="flex items-center space-x-2 mb-3">
@@ -82,24 +99,27 @@ export default function MCQPage({ onSubmit, onExit }: Props) {
                 </div>
               ))}
             </RadioGroup>
+
+            {/* EXPLANATION – appears only after submit */}
+            {showExplanation && (
+              <div className="mt-4 pt-4 border-t">
+                <h4 className="font-semibold mb-1">Rationale</h4>
+                <p className="text-sm text-gray-700">{question.explanation}</p>
+              </div>
+            )}
           </CardContent>
 
-          <CardFooter className="flex justify-between">
-            {currentQuestion === nclexQuestions.length - 1 ? (
-              <Button
-                onClick={submit}
-                disabled={selectedAnswers[currentQuestion] === undefined}
-              >
-                Submit Quiz
-              </Button>
-            ) : (
-              <Button
-                onClick={nextQuestion}
-                disabled={selectedAnswers[currentQuestion] === undefined}
-              >
-                Next Question
-              </Button>
-            )}
+          <CardFooter className="flex justify-end">
+            <Button
+              onClick={nextQuestion}
+              disabled={selectedAnswers[currentQuestion] === undefined}
+            >
+              {!showExplanation
+                ? 'Check Answer'
+                : currentQuestion === nclexQuestions.length - 1
+                ? 'Finish Quiz'
+                : 'Next Question'}
+            </Button>
           </CardFooter>
         </Card>
       </div>

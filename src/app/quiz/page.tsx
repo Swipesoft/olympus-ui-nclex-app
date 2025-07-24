@@ -8,6 +8,7 @@ import QuizOnboardPage from '@/components/Quiz/quiz-onboard';
 import MCQPage  from '@/components/Quiz/quiz-mcq';
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import { nclexQuestions } from '@/constant/constants';
+import MCQRationalePage from '@/components/Quiz/quiz-rationale';
 
 
 // my turn 
@@ -52,7 +53,7 @@ export default function NCLEXQuizApp() {
   if (view === 'home') return <QuizOnboardPage onStart={startQuiz} />;
   if (view === 'quiz')
     return (
-      <MCQPage
+      <MCQRationalePage
         onSubmit={handleSubmit}
         onExit={() => setView('home')}
       />
