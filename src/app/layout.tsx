@@ -22,8 +22,8 @@ const fontFamily = Poppins({
 //});
 
 export const metadata: Metadata = {
-  title: "Landing Page",
-  description: "Landing page using nextjs 15 and tailwindcss 4.",
+  title: "Olympus NCLEX",
+  description: "New Generation NCLEX Q-bank",
 };
 
 export default function RootLayout({

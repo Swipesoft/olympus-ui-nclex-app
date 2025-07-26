@@ -24,6 +24,8 @@ export default function ResultsRoute() {
       correctAnswer: q.correctAnswer,
       isCorrect: answers[i] === q.correctAnswer,
     }));
+    // console log the cached results 
+    alert(`Processed:\n${JSON.stringify(processed, null, 2)}`);
     setResult({
       score: processed.filter((a) => a.isCorrect).length,
       totalQuestions: nclexQuestions.length,
@@ -31,6 +33,7 @@ export default function ResultsRoute() {
       answers: processed,
     });
   }, [router]);
+
 
   if (!result) return null;
 

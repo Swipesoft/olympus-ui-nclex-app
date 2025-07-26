@@ -17,9 +17,11 @@ import { QuizResult } from '@/constant/types';
 export default function QuizDashboardPage({
   result,
   onRestart,
+  onReview
 }: {
   result: QuizResult;
   onRestart: () => void;
+  onReview: () => void;
 }) {
   const percentage = Math.round((result.score / result.totalQuestions) * 100);
   const passThreshold = 75;
@@ -105,7 +107,7 @@ export default function QuizDashboardPage({
 
                 return (
                   <div key={q.id} className="border rounded-lg p-4">
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-2 ">
                       <h4 className="font-medium">Question {i + 1}</h4>
                       {isCorrect ? (
                         <Check className="h-5 w-5 text-green-600" />
@@ -136,12 +138,33 @@ export default function QuizDashboardPage({
           </CardContent>
         </Card>
 
-        <div className="text-center pb-8">
+        
+
+        {/*<div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-8">
           <Button onClick={onRestart} size="lg">
             Take Another Quiz
           </Button>
+          <Button onClick={onReview} size="lg" variant="outline">
+            Review My Answers
+          </Button>
+        </div> */}
+
+        {/* test buttons */}
+        <div className="max-w-4xl mx-auto pb-8 px-0">
+          <div className="flex flex-col gap-4">
+            <Button onClick={onRestart} size="lg" className="w-full">
+              Take Another Quiz
+            </Button>
+            <Button onClick={onReview} size="lg" variant="outline" className="w-full">
+              Review My Answers
+            </Button>
+          </div>
         </div>
+
+        
+
       </div>
+
     </div>
   );
 }

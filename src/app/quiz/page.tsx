@@ -9,7 +9,7 @@ import MCQPage  from '@/components/Quiz/quiz-mcq';
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import { nclexQuestions } from '@/constant/constants';
 import MCQRationalePage from '@/components/Quiz/quiz-rationale';
-
+import MCQReviewPage from '@/components/Quiz/quiz-review';
 
 // my turn 
 
@@ -20,7 +20,7 @@ import MCQRationalePage from '@/components/Quiz/quiz-rationale';
 //import DashboardPage from './components/DashboardPage';
 
 
-type View = 'home' | 'quiz' | 'dashboard';
+type View = 'home' | 'quiz' | 'dashboard'|'review';
 
 export default function NCLEXQuizApp() {
   const [view, setView] = useState<View>('home');
@@ -45,6 +45,8 @@ export default function NCLEXQuizApp() {
     setView('dashboard');
   };
 
+  const reviewQuiz = () => setView('review'); 
+
   const resetQuiz = () => {
     setView('home');
     setResult(null);
@@ -59,7 +61,10 @@ export default function NCLEXQuizApp() {
       />
     );
   if (view === 'dashboard' && result)
-    return <QuizDashboardPage result={result} onRestart={resetQuiz} />;
+    return <QuizDashboardPage result={result} onRestart={resetQuiz} onReview={reviewQuiz}/>;
 
+  if (view === 'review' && result) 
+    return <MCQReviewPage result={result} onExit={()=>setView('dashboard')} />; 
+     
   return null;
 }
