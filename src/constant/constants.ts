@@ -2,33 +2,33 @@
 export const navLinks = [
     {
         id: "1",
-        url:"#",
+        url:"/",
         label: "Home"
     },
     {
         id: "2",
         url:"#",
-        label: "About"
+        label: "Register"
     },
     {
         id: "3",
         url:"#",
-        label: "Feature"
+        label: "Q-bank"
     },
     {
         id: "4",
         url:"#",
-        label: "Price"
+        label: "Login"
     },
     {
         id: "5",
-        url:"#",
-        label: "Testimonial"
+        url:"/sign-in",
+        label: "Clerk-sign-in"
     },
     {
         id: "6",
-        url:"#",
-        label: "Contact"
+        url:"/sign-up",
+        label: "Clerk-sign-up"
     }
 ]
 
