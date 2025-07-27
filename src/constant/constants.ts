@@ -7,13 +7,13 @@ export const navLinks = [
     },
     {
         id: "2",
-        url:"#",
-        label: "About"
+        url:"/sign-in",
+        label: "Clerk-sign-in"
     },
     {
         id: "3",
-        url:"#",
-        label: "Feature"
+        url:"/sign-up",
+        label: "Clerk-sign-up"
     },
     {
         id: "4",

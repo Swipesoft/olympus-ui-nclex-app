@@ -104,7 +104,7 @@ const HeroBanner = ({ heroImage }: Props)=> {
         </div>
         {/* Image Content */}
         <div data-aos="zoom-in" data-aos-delay="150" className="mx-auto hidden xl:block">
-            <Image src={imageSrc} alt="Banner" width={380} height={380} />
+            <Image src="/nurse1b.png" alt="Banner" width={1200} height={1200} />
         </div>
       </div>
     </div>

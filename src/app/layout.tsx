@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Provider from "@/components/Hoc/provider";
+import { ClerkProvider } from '@clerk/nextjs'
 
 // Nextjs default layout.tsx file content 
 //const geistSans = Geist({
@@ -32,6 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider > 
     <html lang="en" suppressHydrationWarning>
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -42,5 +44,6 @@ export default function RootLayout({
       </Provider> 
       </body>
     </html>
+    </ClerkProvider>
   );
 }
