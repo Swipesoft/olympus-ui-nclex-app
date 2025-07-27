@@ -23,6 +23,7 @@ import MCQReviewPage from '@/components/Quiz/quiz-review';
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 
 export default function NCLEXQuizApp() {
+  
   const [view, setView] = useState<View>('home');
   const [result, setResult] = useState<QuizResult | null>(null);
 

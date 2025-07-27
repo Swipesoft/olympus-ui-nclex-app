@@ -17,8 +17,8 @@ export const navLinks = [
     },
     {
         id: "4",
-        url:"#",
-        label: "Price"
+        url:"/quiz",
+        label: "NCLEX Q-bank"
     },
     {
         id: "5",
