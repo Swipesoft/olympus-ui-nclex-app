@@ -1,7 +1,8 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
-//import { prisma } from '@/lib/prisma'
-import prisma from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
+//import prisma from '@/lib/prisma'
 
+// function to sync Clerk user with your database table for users
 export async function syncUserWithDatabase() {
   const { userId } = await auth()
   if (!userId) return null
