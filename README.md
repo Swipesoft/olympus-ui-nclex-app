@@ -48,3 +48,12 @@ A sleek landing page built with Next.js 15 and Tailwind CSS. Features:
 - Clean layout and animations
 - Tailwind CSS integration
 - Ideal for product or portfolio landing pages
+
+
+# ToDo for launch 
+[x] Clerk authentication 
+[ ] Support for SATA questions 
+[ ] API routes for querying question DB (No SQL)
+[ ] API route for saving student logs in SQL 
+[ ] Quiz page mobile display margin/padding
+[ ] Landing page photos, text etc
