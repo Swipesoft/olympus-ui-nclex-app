@@ -51,9 +51,16 @@ A sleek landing page built with Next.js 15 and Tailwind CSS. Features:
 
 
 # ToDo for launch 
-[x] Clerk authentication 
-[ ] Support for SATA questions 
-[ ] API routes for querying question DB (No SQL)
-[ ] API route for saving student logs in SQL 
-[ ] Quiz page mobile display margin/padding
-[ ] Landing page photos, text etc
+- [x] Clerk authentication 
+- [x] Support for SATA questions 
+- [x] API routes for querying question DB (No SQL)
+- [ ] API route for saving student logs in SQL 
+- [ ] Quiz page mobile display margin/padding
+- [ ] Landing page photos, text etc
+
+
+
+# Database design principles 
+- Logs: NoSQL({sessionID, userID, questionID, score, selectedAnswers})
+
+- Questions: NoSQL({questionID, question, options, rationale...})
