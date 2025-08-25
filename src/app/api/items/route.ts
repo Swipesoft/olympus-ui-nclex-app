@@ -2,7 +2,10 @@
 import { NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
 import {auth} from '@clerk/nextjs/server';
+//import { getItems } from '@/lib/db/items';
+import { getItems } from '@/lib/db/items';
 import { MongoClient } from 'mongodb';
+import { get } from 'http';
 //import clientPromise from '@/lib/mongodb'; //import reusable peer connection
 
 const dbName = 'olympus_qbank_cloud'; 
@@ -17,7 +20,10 @@ export async function GET() {
   }
   const client = await clientPromise;
   const db = client.db(dbName);
-  const items = await db.collection(collectionName).find({}).toArray();
+  // return all items from collection
+  //const items = await db.collection(collectionName).find({}).toArray();
+  // sample 5 random items from collection 
+  const items = await getItems();
   return NextResponse.json(items);
 }
 

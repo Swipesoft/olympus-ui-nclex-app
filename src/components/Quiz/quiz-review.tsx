@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,12 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { nclexQuestions } from '@/constant/constants';
 import MarkdownRenderer from './markdown-renderer';
 import { QuizResult } from '@/constant/types';
-import { useState } from 'react';
 
 interface Props {
   result: QuizResult;
@@ -30,13 +29,13 @@ export default function MCQReviewPage({ result, onExit }: Props) {
   const answer = result.answers[current];
   const progress = ((current + 1) / nclexQuestions.length) * 100;
 
+  const selectedSet = new Set(answer?.selectedAnswers ?? []);
+  const correctSet = new Set(question.correctAnswer);
+
   /* ------------ helpers ------------ */
   const next = () => {
-    if (current < nclexQuestions.length - 1) {
-      setCurrent((c) => c + 1);
-    }
+    if (current < nclexQuestions.length - 1) setCurrent((c) => c + 1);
   };
-
   const prev = () => {
     if (current > 0) setCurrent((c) => c - 1);
   };
@@ -68,37 +67,36 @@ export default function MCQReviewPage({ result, onExit }: Props) {
           </CardHeader>
 
           <CardContent>
-            {/* OPTIONS – disabled, always show user’s choice & correct */}
-            <RadioGroup value={answer.selectedAnswer.toString()}>
+            {/* OPTIONS – read-only checkboxes */}
+            <div className="space-y-3">
               {question.options.map((opt, i) => {
-                const isUserChoice = i === answer.selectedAnswer;
-                const isCorrect = i === question.correctAnswer;
+                const isSelected = selectedSet.has(i);
+                const isCorrect = correctSet.has(i);
+
                 let ring = '';
                 if (isCorrect) ring = 'ring-2 ring-green-500';
-                else if (isUserChoice && !isCorrect) ring = 'ring-2 ring-red-500';
+                else if (isSelected && !isCorrect) ring = 'ring-2 ring-red-500';
 
                 return (
                   <div
                     key={i}
-                    className={`flex items-center space-x-2 mb-3 p-2 rounded-md ${ring}`}
+                    className={`flex items-center space-x-2 p-2 rounded-md ${ring}`}
                   >
-                    <RadioGroupItem
-                      value={i.toString()}
+                    <Checkbox
                       id={`opt-${i}`}
+                      checked={isSelected}
                       disabled
+                      aria-readonly
                     />
-                    <Label
-                      htmlFor={`opt-${i}`}
-                      className="cursor-default flex-1"
-                    >
+                    <Label htmlFor={`opt-${i}`} className="cursor-default flex-1">
                       {opt}
                     </Label>
                   </div>
                 );
               })}
-            </RadioGroup>
+            </div>
 
-            {/* EXPLANATION – always visible */}
+            {/* EXPLANATION */}
             <div className="mt-6 pt-4 border-t">
               <h4 className="font-semibold mb-1">Rationale</h4>
               <MarkdownRenderer content={question.explanation} />
@@ -109,12 +107,11 @@ export default function MCQReviewPage({ result, onExit }: Props) {
             <Button onClick={prev} disabled={current === 0}>
               Previous
             </Button>
-
             {current === nclexQuestions.length - 1 ? (
-               <Button onClick={onExit}>Finish Review</Button>
-                ) : (
-                   <Button onClick={next}>Next</Button>
-                )}
+              <Button onClick={onExit}>Finish Review</Button>
+            ) : (
+              <Button onClick={next}>Next</Button>
+            )}
           </CardFooter>
         </Card>
       </div>

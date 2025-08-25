@@ -15,6 +15,8 @@ export interface NclexQuestion {
   id: number;
   question: string;
   options: string[];
-  correctAnswer: number;
+  correctAnswer: number[];  // <-- changed to array for multi-select in SATA
   explanation: string; // Added for rationale 
 }
+
+

@@ -1,3 +1,5 @@
+//import { fetched_questions } from '@/lib/fetchers/fetch-items';
+
 // links for the navigation bar
 export const navLinks = [
     {
@@ -32,6 +34,8 @@ export const navLinks = [
     }
 ]
 
+//export const nclexQuestions = fetched_questions; 
+ 
 // model schema for NCLEX Questions (i.e API call returns)
 export const nclexQuestions_old = [
   {
@@ -106,7 +110,7 @@ export const nclexQuestions = [
       "Hyperkalemia",
       "Tachycardia"
     ],
-    correctAnswer: 0,
+    correctAnswer: [0],
     explanation: `
 **✅ Bradycardia**  
 Bradycardia is a classic early sign of digoxin toxicity due to its effect on increasing vagal tone and slowing down conduction through the AV node.
@@ -130,7 +134,7 @@ Digoxin tends to slow the heart rate. Tachyarrhythmias can appear in toxicity, b
       "Drainage of 200mL in 8 hours",
       "Client reports pain at insertion site"
     ],
-    correctAnswer: 0,
+    correctAnswer: [0],
     explanation: `
 **✅ Continuous bubbling in the water seal chamber**  
 This indicates an **air leak** in the system, which could lead to pneumothorax or compromise lung expansion. Needs prompt investigation.
@@ -154,7 +158,7 @@ Mild discomfort is expected, though it should still be monitored. It does not re
       "Check urine ketones",
       "Administer regular insulin"
     ],
-    correctAnswer: 0,
+    correctAnswer: [0],
     explanation: `
 **✅ Give 15g of fast-acting carbohydrates**  
 This is the **first-line emergency treatment** for hypoglycemia. Glucose <70 mg/dL is considered low; <50 mg/dL is critical.
@@ -178,7 +182,7 @@ This would dangerously **worsen hypoglycemia**. Insulin is contraindicated in th
       "Platelet count",
       "Hemoglobin"
     ],
-    correctAnswer: 1,
+    correctAnswer: [1],
     explanation: `
 **✅ aPTT**  
 Heparin prolongs the **activated partial thromboplastin time**, so monitoring aPTT is critical to ensure therapeutic anticoagulation.
@@ -202,7 +206,7 @@ Hemoglobin monitoring is useful for assessing bleeding, but it’s **not specifi
       "Client reports nausea",
       "Urinary retention"
     ],
-    correctAnswer: 0,
+    correctAnswer: [0,3],
     explanation: `
 **✅ Respiratory rate of 8 breaths/min**  
 Morphine can cause **respiratory depression**, especially at high doses. Rates <10/min are considered critical and require **immediate action**.
