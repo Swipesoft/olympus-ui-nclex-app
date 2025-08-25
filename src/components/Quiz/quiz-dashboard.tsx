@@ -1,5 +1,5 @@
 'use client';
-
+// src/components/Quiz/quiz-dashboard.tsx
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,18 +10,27 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Award, Clock, TrendingUp, Check, X } from 'lucide-react';
-import { nclexQuestions } from '@/constant/constants';
+//import { nclexQuestions } from '@/constant/constants';
 import { QuizResult } from '@/constant/types';
+import { NclexQuestion } from '@/constant/types';
 
 export default function QuizDashboardPage({
   result,
+  nclexQuestions,
   onRestart,
   onReview,
 }: {
   result: QuizResult;
+  nclexQuestions: NclexQuestion[];
   onRestart: () => void;
   onReview: () => void;
 }) {
+  /* ------------ data fetch ------------ */
+  //const { data: nclexQuestions = [], isLoading, isError } = useItems();
+  //if (isLoading) return <div>Loading questions...</div>;
+  //if (isError || nclexQuestions.length === 0) {
+    //return <div>Error loading questions.</div>;
+  //}
   const percentage = Math.round((result.score / result.totalQuestions) * 100);
   const passThreshold = 75;
 

@@ -10,6 +10,7 @@ import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import { nclexQuestions } from '@/constant/constants';
 import MCQRationalePage from '@/components/Quiz/quiz-rationale'; // used for displaying questions with rationale after submission
 import MCQReviewPage from '@/components/Quiz/quiz-review';
+import { useItems } from '@/hooks/useItems';
 
 // my turn 
 
@@ -23,8 +24,17 @@ import MCQReviewPage from '@/components/Quiz/quiz-review';
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 
 export default function NCLEXQuizApp() {
+  /*---------- data fetch ------------ */
+  const { data: nclexQuestions = [], isLoading, isError } = useItems();
+  /* ------------ state ------------ */
   const [view, setView] = useState<View>('home');
   const [result, setResult] = useState<QuizResult | null>(null);
+
+  /* ------------Early return handlers ------------ */
+  if (isLoading) return <div>Loading questions...</div>;
+  if (isError || nclexQuestions.length === 0) {
+    return <div>Error loading questions.</div>;
+  }
 
   const startQuiz = () => setView('quiz');
 
@@ -69,18 +79,19 @@ export default function NCLEXQuizApp() {
   if (view === 'home') return <QuizOnboardPage onStart={startQuiz} />;
   if (view === 'quiz')
     return (
-      <MCQRationalePage onSubmit={handleSubmit} onExit={() => setView('home')} />
+      <MCQRationalePage nclexQuestions={nclexQuestions} onSubmit={handleSubmit} onExit={() => setView('home')} />
     );
   if (view === 'dashboard' && result)
     return (
       <QuizDashboardPage
         result={result}
+        nclexQuestions={nclexQuestions}
         onRestart={resetQuiz}
         onReview={reviewQuiz}
       />
     );
   if (view === 'review' && result)
-    return <MCQReviewPage result={result} onExit={() => setView('dashboard')} />;
+    return <MCQReviewPage nclexQuestions ={nclexQuestions} result={result} onExit={() => setView('dashboard')} />;
 
   return null;
 }

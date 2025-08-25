@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Provider from "@/components/Hoc/provider";
 import { ClerkProvider } from '@clerk/nextjs'
+import QueryProvider from "@/providers/query-provider";
 
 // Nextjs default layout.tsx file content 
 //const geistSans = Geist({
@@ -39,9 +40,11 @@ export default function RootLayout({
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${fontFamily.className} antialiased`}
       >
+        <QueryProvider>
       <Provider>
         {children}
       </Provider> 
+      </QueryProvider>
       </body>
     </html>
     </ClerkProvider>

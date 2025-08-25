@@ -11,16 +11,17 @@ import {
 } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { nclexQuestions } from '@/constant/constants';
+import { NclexQuestion } from '@/constant/types';
 import MarkdownRenderer from './markdown-renderer';
 import { QuizResult } from '@/constant/types';
 
 interface Props {
+  nclexQuestions: NclexQuestion[]; // Pass the questions as a prop
   result: QuizResult;
   onExit: () => void;
 }
 
-export default function MCQReviewPage({ result, onExit }: Props) {
+export default function MCQReviewPage({ nclexQuestions, result, onExit }: Props) {
   /* ------------ state ------------ */
   const [current, setCurrent] = useState(0);
 
