@@ -12,14 +12,6 @@ import MCQRationalePage from '@/components/Quiz/quiz-rationale'; // used for dis
 import MCQReviewPage from '@/components/Quiz/quiz-review';
 import { useItems } from '@/hooks/useItems';
 
-// my turn 
-
-//import { useState } from 'react';
-//import { QuizResult } from './types/quiz';
-//import HomePage from './components/HomePage';
-//import QuizPage from './components/QuizPage';
-//import DashboardPage from './components/DashboardPage';
-
 
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 
