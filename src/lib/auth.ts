@@ -1,5 +1,6 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/prisma'
+import clientPromise from '@/lib/mongodb';
 
 export async function syncUserWithDatabase() {
   try {
@@ -35,7 +36,7 @@ export async function syncUserWithDatabase() {
     }
 
     console.log("Attempting to upsert user:", { clerkId: clerkUser.id, ...data });
-
+    //prisma writes 
     const result = await prisma.user.upsert({
       where: { clerkId: clerkUser.id },
       update: data,
@@ -43,6 +44,42 @@ export async function syncUserWithDatabase() {
     })
 
     console.log("User upserted successfully:", result);
+    //return result;
+
+    // mongoDB writes 
+    
+    const client = await clientPromise;
+    const collectionName = 'users';
+    const dbName = 'olympus_users_cloud'; 
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    // Check if user exists
+    const existingUser = await collection.findOne({ clerkId: clerkUser.id });
+
+    let mongodb_result;
+    if (existingUser) {
+      // Update existing user
+      mongodb_result = await collection.updateOne(
+        { clerkId: clerkUser.id },
+        { 
+          $set: { 
+            ...data, 
+            updatedAt: new Date() 
+          }
+        }
+      );
+      console.log("User updated:", mongodb_result.modifiedCount);
+    } else {
+      // Create new user
+      mongodb_result = await collection.insertOne({
+        ...data,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      console.log("User created:", mongodb_result.insertedId);
+    }
+
     return result;
 
   } catch (error) {

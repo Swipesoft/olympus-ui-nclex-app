@@ -3,12 +3,12 @@ import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 //import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 
 const dbName = 'olympus_qbank_cloud'; 
-const collectionName = 'standalone'; 
 const uri = process.env.MONGODB_URI!;
 
 
 export async function getItems() {
   const client = await clientPromise;
+  const collectionName = 'standalone'; 
   const db = client.db(dbName);
 
   // return all items from collection
@@ -25,8 +25,3 @@ export async function getItems() {
     return items;
 }
 
-
-
-// fetching this route from client-side
-//const res = await fetch('/api/items');
-//const data = await res.json();
