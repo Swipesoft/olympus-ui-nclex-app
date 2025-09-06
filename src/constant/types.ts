@@ -25,6 +25,8 @@ export interface NclexQuestion {
 export interface QuizApiResponse {
   success: boolean;
   id?: ObjectId;
+  sessionId?: ObjectId;
+  userDynamicsId?: ObjectId;
   message: string;
 }
 
@@ -45,7 +47,18 @@ export interface QuizResultDocument extends Omit<QuizResult, 'answers'> {
 
 export interface QuizAnswerDocument {
   questionId: string;
-  selectedAnswer: number[];
-  correctAnswer: number[];
+  selectedAnswers: number[];
+  correctAnswers: number[];
   isCorrect: boolean;
+}
+
+export interface UserDynamicsDocument {
+  _id?: ObjectId;
+  clerkId: string;
+  accuracy: string; // e.g., "85.2%"
+  proficiency: number; // constant 0.5 for now
+  sessions: string[]; // array of quiz_result ObjectIds as strings
+  question_count: number; // total questions attempted across all sessions
+  createdAt: Date;
+  updatedAt: Date;
 }

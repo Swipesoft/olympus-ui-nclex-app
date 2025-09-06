@@ -46,7 +46,7 @@ export default function NCLEXQuizApp() {
       setIsSaving(true);
       console.log("💾 Saving quiz result...", quizResult);
 
-      const response = await fetch('/api/upload-session', {
+      const response = await fetch('/api/upload-session-with-dynamics', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,12 +95,6 @@ export default function NCLEXQuizApp() {
       };
     });
 
-    setResult({
-      score: processed.filter((a) => a.isCorrect).length,
-      totalQuestions: nclexQuestions.length,
-      timeTaken,
-      answers: processed,
-    });
     // processed = [ { questionId, selectedAnswers: [], correctAnswers: [], isCorrect: Boolean } ]
     console.log("👤 Clerk user result:",processed)
 
@@ -111,7 +105,10 @@ export default function NCLEXQuizApp() {
       timeTaken,
       answers: processed,
     };
+    // Update state to show dashboard view locally 
+    setResult(quizResult);
 
+    // Save to backend MongoDB Log collection
     if (quizResult){
       await saveQuizResult(quizResult);
     }
