@@ -76,6 +76,7 @@ export async function syncUserWithDatabase() {
         ...data,
         createdAt: new Date(),
         updatedAt: new Date(),
+        clerkId: clerkUser.id
       });
       console.log("User created:", mongodb_result.insertedId);
     }
