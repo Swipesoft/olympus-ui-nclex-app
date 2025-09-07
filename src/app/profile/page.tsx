@@ -12,10 +12,14 @@ type View = 'profile' | 'dashboard' | 'review';
 
 export default function ProfilePageContainer() {
     // fetch user profile data using custom hook 
-    const { data: recentResults= [], isLoading, isError } = useSession(); 
+    const { data: sessionData, isLoading, isError } = useSession();
+    const { recentResults = [], performanceSummary } = sessionData ?? {};
+
     //manage state for view switching between profile and review of past quizzes/sessions 
     const [view, setView] = useState<View>('profile');
     const [result, setResult] = useState<QuizResult | null>(null); 
+
+    // Destructure performance summary from recentResults if available
 
     // Tanstack early return handlers 
     if (isLoading) return <div>Loading profile...</div>; 
@@ -26,7 +30,7 @@ export default function ProfilePageContainer() {
     const switchToProfile = () => setView('profile'); // function to switch back to profile view 
 
     //render based on current view state 
-    if (view === 'profile') return <UserProfile recentResults={recentResults} />;
+    if (view === 'profile') return <UserProfile performanceSummary={performanceSummary} recentResults={recentResults} />;
     if (view === 'dashboard' && result)
         return (
             <QuizDashboardPage 
@@ -34,7 +38,6 @@ export default function ProfilePageContainer() {
                 onRestart = {switchToProfile} 
                 onReview = {switchToReview}
                 nclexQuestions={null}
-            
             />
             );
 

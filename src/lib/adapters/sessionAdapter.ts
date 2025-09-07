@@ -45,10 +45,11 @@ export interface QuizResult {
   date: string;
 }
 
-interface PerformanceSummary {
+
+export interface PerformanceSummary {
   averageScore: number;
-  bestScore: number;
-  improvement: number;
+  questionsAttempted: number;
+  questionsRemaining: number;
 }
 
 // Mock data /////////////////////////////////////////////////////////////////////
@@ -60,13 +61,14 @@ const recentResults: QuizResult[] = [
   { id: "yxz", title: "Practice 5", score: 16, total: 20, date: "2023-05-25" },
 ];
 
-const scoreTrend = [
+const scoreTrend= [
   { quiz: "Practice 1", score: 90 },
   { quiz: "Practice 2", score: 75 },
   { quiz: "Practice 3", score: 85 },
   { quiz: "Practice 4", score: 95},
   { quiz: "Practice 5", score: 80},
 ];
+
 
 const performanceSummary: PerformanceSummary = {
   averageScore: 82,
@@ -128,14 +130,18 @@ export function adaptSessionDataToProfileData_old( doc :  AllSessionsResult) {
 
 ////////////////////////////////////////////////////////////////////////
 
-export function adaptSessionDataToProfileData(doc: AllSessionsResult): QuizResult[] {
-    console.log("Adapting session data:", doc);
-    // Map sessions to include both raw Date and formatted string
+
+const TOTAL_QBANK_QUESTIONS = 368;
+
+export function adaptSessionDataToProfileData(
+  doc: AllSessionsResult
+): { recentResults: QuizResult[]; performanceSummary: PerformanceSummary } {
+  // Map sessions to include both raw Date and formatted string
   const adaptedResults = doc.sessions.map((session, index) => {
-    const completedAt = new Date(session.completedAt); // ensure Date object
+    const completedAt = new Date(session.completedAt);
     return {
       id: session._id ? session._id.toString() : "",
-      title: `NCLEX Practice Session ${index + 1}`,
+      title: `Session on ${index + 1}`,
       score: session.score,
       total: session.totalQuestions,
       completedAt, // keep raw date for sorting
@@ -146,12 +152,36 @@ export function adaptSessionDataToProfileData(doc: AllSessionsResult): QuizResul
   // Sort by actual Date object (newest first)
   adaptedResults.sort((a, b) => b.completedAt.getTime() - a.completedAt.getTime());
 
-  // If fewer than 5 sessions, return all; otherwise, return top 5
+  // Limit to 5 most recent results (or all if fewer than 5)
   const limitedResults =
     adaptedResults.length <= 5 ? adaptedResults : adaptedResults.slice(0, 5);
 
-  // Strip out the raw Date before returning so it matches QuizResult type
+  // Strip out raw Date before returning
   const recentResults: QuizResult[] = limitedResults.map(({ completedAt, ...rest }) => rest);
-  console.log("Adapted recentResults:", recentResults);
-  return recentResults;
+
+  // --- Performance Summary ---
+  const totalQuestionsAttempted = adaptedResults.reduce(
+    (sum, r) => sum + r.total,
+    0
+  );
+
+  const averageScore =
+    adaptedResults.length > 0
+      ? adaptedResults.reduce((sum, r) => sum + (r.score / r.total) * 100, 0) /
+        adaptedResults.length
+      : 0;
+
+  const questionsRemaining = Math.max(
+    TOTAL_QBANK_QUESTIONS - totalQuestionsAttempted,
+    0
+  );
+
+  const performanceSummary: PerformanceSummary = {
+    averageScore: parseFloat(averageScore.toFixed(1)),
+    questionsAttempted: totalQuestionsAttempted,
+    questionsRemaining,
+  };
+
+  return { recentResults, performanceSummary };
 }
+

@@ -2,7 +2,8 @@
 import Link from "next/link"; 
 import { useState, useEffect, useRef } from "react";
 import { User, TrendingUp, Target, Award } from "lucide-react";
-import { QuizResult } from "@/lib/adapters/sessionAdapter";
+import { QuizResult, PerformanceSummary } from "@/lib/adapters/sessionAdapter";
+
 // Types
 interface QuizResult0 {
   id: string;
@@ -12,10 +13,10 @@ interface QuizResult0 {
   date: string;
 }
 
-interface PerformanceSummary {
+interface PerformanceSummary0 {
   averageScore: number;
-  bestScore: number;
-  improvement: number;
+  questionsAttempted: number;
+  questionsRemaining: number;
 }
 
 // Mock data
@@ -27,7 +28,7 @@ interface PerformanceSummary {
   //{ id: 5, title: "Node.js Basics", score: 16, total: 20, date: "2023-05-25" },
 //];
 
-const scoreTrend = [
+const scoreTrend= [
   { quiz: "Science", score: 30 },
   { quiz: "Math", score: 70 },
   { quiz: "Logic", score: 85 },
@@ -38,7 +39,9 @@ const scoreTrend = [
   { quiz: "Biology", score: 88 },
 ];
 
-const performanceSummary: PerformanceSummary = {
+  
+
+const performanceSummaryo: PerformanceSummary = {
   averageScore: 82,
   bestScore: 95,
   improvement: 18,
@@ -46,9 +49,13 @@ const performanceSummary: PerformanceSummary = {
 
 type UserProfileProps = {
   recentResults: QuizResult[];
-};
+  performanceSummary: PerformanceSummary;
+} 
 
-export default function UserProfile({ recentResults }: UserProfileProps) {
+export default function UserProfile({
+  recentResults,
+  performanceSummary,
+}: UserProfileProps) {
   const [chartDimensions, setChartDimensions] = useState({ width: 280, height: 120 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
   console.log("📊 Profile Recent Results:", recentResults);
@@ -132,37 +139,7 @@ export default function UserProfile({ recentResults }: UserProfileProps) {
           </div>
         </section>
 
-        {/* Recent Results */}
-        <section className="bg-white rounded-2xl p-5 md:p-6 shadow-sm">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg md:text-xl font-bold text-gray-800">Recent Results</h2>
-            <button className="text-indigo-600 text-sm font-medium">View All</button>
-          </div>
-          
-          <div className="space-y-4">
-            {recentResults.map((result) => (
-              <Link 
-                key={result.id} 
-                href={`/review/${result.id}`} // dynamic route
-                className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
-                <div className="flex justify-between mb-1">
-                  <h3 className="font-medium text-gray-800">{result.title}</h3>
-                  <span className="text-sm font-semibold text-gray-600">
-                    {result.score}/{result.total}
-                  </span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-indigo-600 h-2 rounded-full" 
-                    style={{ width: `${(result.score / result.total) * 100}%` }}
-                  ></div>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">{result.date}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
+        
         {/* Score Trend Graph */}
         <section className="bg-white rounded-2xl p-5 md:p-6 shadow-sm">
           <div className="flex justify-between items-center mb-4">
@@ -266,7 +243,7 @@ export default function UserProfile({ recentResults }: UserProfileProps) {
               <div className="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Award className="text-indigo-600" />
               </div>
-              <p className="text-sm text-gray-600 mb-1">Average Score</p>
+              <p className="text-sm text-gray-600 mb-1">Accuracy</p>
               <p className="text-xl font-bold text-gray-800">{performanceSummary.averageScore}%</p>
             </div>
             
@@ -274,20 +251,51 @@ export default function UserProfile({ recentResults }: UserProfileProps) {
               <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <TrendingUp className="text-green-600" />
               </div>
-              <p className="text-sm text-gray-600 mb-1">Best Score</p>
-              <p className="text-xl font-bold text-gray-800">{performanceSummary.bestScore}%</p>
+              <p className="text-sm text-gray-600 mb-1">Questions Attempted</p>
+              <p className="text-xl font-bold text-gray-800">{performanceSummary.questionsAttempted}</p>
             </div>
             
             <div className="bg-amber-50 rounded-xl p-4 text-center">
               <div className="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
                 <Target className="text-amber-600" />
               </div>
-              <p className="text-sm text-gray-600 mb-1">Improvement</p>
-              <p className="text-xl font-bold text-gray-800">+{performanceSummary.improvement}%</p>
+              <p className="text-sm text-gray-600 mb-1">Questions Remaining</p>
+              <p className="text-xl font-bold text-gray-800">+{performanceSummary.questionsRemaining}</p>
             </div>
           </div>
         </section>
         
+        {/* Recent Results */}
+        <section className="bg-white rounded-2xl p-5 md:p-6 shadow-sm">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg md:text-xl font-bold text-gray-800">Recent Results</h2>
+            <button className="text-indigo-600 text-sm font-medium">View All</button>
+          </div>
+          
+          <div className="space-y-4">
+            {recentResults.map((result) => (
+              <Link 
+                key={result.id} 
+                href={`/review/${result.id}`} // dynamic route
+                className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                <div className="flex justify-between mb-1">
+                  <h3 className="font-medium text-gray-800">{result.title}</h3>
+                  <span className="text-sm font-semibold text-gray-600">
+                    {result.score}/{result.total}
+                  </span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-indigo-600 h-2 rounded-full" 
+                    style={{ width: `${(result.score / result.total) * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-xs text-gray-500 mt-1">{result.date}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <div className="pb-8"></div>
       </main>
     </div>
