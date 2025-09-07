@@ -1,11 +1,11 @@
 "use client";
-
+import Link from "next/link"; 
 import { useState, useEffect, useRef } from "react";
 import { User, TrendingUp, Target, Award } from "lucide-react";
-
+import { QuizResult } from "@/lib/adapters/sessionAdapter";
 // Types
-interface QuizResult {
-  id: number;
+interface QuizResult0 {
+  id: string;
   title: string;
   score: number;
   total: number;
@@ -19,13 +19,13 @@ interface PerformanceSummary {
 }
 
 // Mock data
-const recentResults: QuizResult[] = [
-  { id: 1, title: "JavaScript Basics", score: 18, total: 20, date: "2023-05-15" },
-  { id: 2, title: "React Fundamentals", score: 15, total: 20, date: "2023-05-18" },
-  { id: 3, title: "CSS Layouts", score: 17, total: 20, date: "2023-05-20" },
-  { id: 4, title: "TypeScript Intro", score: 19, total: 20, date: "2023-05-22" },
-  { id: 5, title: "Node.js Basics", score: 16, total: 20, date: "2023-05-25" },
-];
+//const recentResults: QuizResult[] = [
+ // { id: 1, title: "JavaScript Basics", score: 18, total: 20, date: "2023-05-15" },
+  //{ id: 2, title: "React Fundamentals", score: 15, total: 20, date: "2023-05-18" },
+  //{ id: 3, title: "CSS Layouts", score: 17, total: 20, date: "2023-05-20" },
+  //{ id: 4, title: "TypeScript Intro", score: 19, total: 20, date: "2023-05-22" },
+  //{ id: 5, title: "Node.js Basics", score: 16, total: 20, date: "2023-05-25" },
+//];
 
 const scoreTrend = [
   { quiz: "Science", score: 30 },
@@ -44,10 +44,14 @@ const performanceSummary: PerformanceSummary = {
   improvement: 18,
 };
 
-export default function UserProfile() {
+type UserProfileProps = {
+  recentResults: QuizResult[];
+};
+
+export default function UserProfile({ recentResults }: UserProfileProps) {
   const [chartDimensions, setChartDimensions] = useState({ width: 280, height: 120 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
-
+  console.log("📊 Profile Recent Results:", recentResults);
   // Update chart dimensions based on container width
   useEffect(() => {
     const updateChartDimensions = () => {
@@ -62,7 +66,6 @@ export default function UserProfile() {
         });
       }
     };
-
     updateChartDimensions();
     window.addEventListener('resize', updateChartDimensions);
     return () => window.removeEventListener('resize', updateChartDimensions);
@@ -103,9 +106,9 @@ export default function UserProfile() {
       <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-sm">
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center">
-            <span className="text-white font-bold text-xl">Q</span>
+            <span className="text-white font-bold text-xl">O</span>
           </div>
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800">Quizzer</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800">Olympus</h1>
         </div>
         <button className="p-2 rounded-full hover:bg-gray-100">
           <User className="text-gray-600" />
@@ -138,7 +141,10 @@ export default function UserProfile() {
           
           <div className="space-y-4">
             {recentResults.map((result) => (
-              <div key={result.id} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+              <Link 
+                key={result.id} 
+                href={`/review/${result.id}`} // dynamic route
+                className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
                 <div className="flex justify-between mb-1">
                   <h3 className="font-medium text-gray-800">{result.title}</h3>
                   <span className="text-sm font-semibold text-gray-600">
@@ -152,7 +158,7 @@ export default function UserProfile() {
                   ></div>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">{result.date}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
