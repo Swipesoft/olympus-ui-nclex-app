@@ -27,7 +27,10 @@ interface QuizConfig {
   includeAudio: boolean
 }
 
-export default function NCLEXQuizBuilder() {
+interface NCLEXQuizBuilderProps {
+  onfinishBuild: (config: QuizConfig) => void
+}
+export default function NCLEXQuizBuilder({ onfinishBuild}: NCLEXQuizBuilderProps) {
   const [config, setConfig] = useState<QuizConfig>({
     questionTypes: [],
     subjectAreas: [],
@@ -101,9 +104,12 @@ export default function NCLEXQuizBuilder() {
     return estimatedMinutes
   }
 
+  // dummy function to simulate starting the quiz during development
+  // in real app, this would navigate to the quiz page with the config
   const startQuiz = () => {
+    onfinishBuild(config)
     console.log('Starting quiz with configuration:', config)
-    alert(`Quiz starting in ${config.quizMode} mode with ${config.numQuestions} questions!`)
+    //alert(`Quiz starting in ${config.quizMode} mode with ${config.numQuestions} questions!`)
   }
 
   return (

@@ -2,7 +2,7 @@
 
 // Adapter to Convert the MongoDB nclex items record shape into the shape our frontend expects.
 export function adaptItemsToSchema(doc: {
-  _id: string;
+  _id: string | any;
   question_string: string;
   question_options: string[];
   verified_answer: number[];
