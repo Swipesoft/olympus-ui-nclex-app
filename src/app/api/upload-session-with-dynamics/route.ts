@@ -47,6 +47,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<QuizApiRespon
       score: quizSession.score,
       totalQuestions: quizSession.totalQuestions,
       answers: quizSession.answers,
+      timeTaken: quizSession.timeTaken,
       percentage: (quizSession.score / quizSession.totalQuestions) * 100,
       completedAt: new Date(),
       createdAt: new Date(),

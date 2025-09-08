@@ -52,6 +52,10 @@ export interface PerformanceSummary {
   questionsRemaining: number;
 }
 
+export interface ScoreTrend {
+  quiz: string;
+  score: number; // percentage
+} 
 // Mock data /////////////////////////////////////////////////////////////////////
 const recentResults: QuizResult[] = [
   { id: "abc", title: "Practice 1", score: 18, total: 20, date: "2023-05-15" },
@@ -135,13 +139,13 @@ const TOTAL_QBANK_QUESTIONS = 368;
 
 export function adaptSessionDataToProfileData(
   doc: AllSessionsResult
-): { recentResults: QuizResult[]; performanceSummary: PerformanceSummary } {
+): { recentResults: QuizResult[]; performanceSummary: PerformanceSummary; scoreTrend: ScoreTrend[] } {
   // Map sessions to include both raw Date and formatted string
   const adaptedResults = doc.sessions.map((session, index) => {
     const completedAt = new Date(session.completedAt);
     return {
       id: session._id ? session._id.toString() : "",
-      title: `Session on ${index + 1}`,
+      title: `NCLEX Practice Test ${index + 1}`,
       score: session.score,
       total: session.totalQuestions,
       completedAt, // keep raw date for sorting
@@ -182,6 +186,12 @@ export function adaptSessionDataToProfileData(
     questionsRemaining,
   };
 
-  return { recentResults, performanceSummary };
+  //compute the score trend for chart (last all sessions)
+  const scoreTrend = adaptedResults.map((result) => ({
+     quiz: result.title,
+     score: (result.score / result.total) * 100, // Convert to percentage
+   })).reverse(); // Reverse to have oldest first for chart
+
+  return { recentResults, performanceSummary , scoreTrend};
 }
 

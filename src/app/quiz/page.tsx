@@ -112,6 +112,7 @@ export default function NCLEXQuizApp() {
     if (quizResult){
       await saveQuizResult(quizResult);
     }
+    // Switch to dashboard view
     setView('dashboard');
   };
 

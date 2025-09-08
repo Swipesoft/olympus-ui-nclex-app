@@ -138,6 +138,7 @@ export default function NCLEXQuizBuilder() {
                       <Checkbox
                         id={type.id}
                         checked={config.questionTypes.includes(type.id)}
+                        disabled={type.disabled} // disable if marked as disabled = true in constants
                         onCheckedChange={(checked) => handleQuestionTypeChange(type.id, checked as boolean)}
                       />
                       <div className="space-y-1">
@@ -271,9 +272,9 @@ export default function NCLEXQuizBuilder() {
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <RadioGroupItem value="exam" id="exam" />
+                      <RadioGroupItem value="exam" id="exam" disabled/>
                       <div className="space-y-1">
-                        <Label htmlFor="exam" className="font-medium">Exam Mode</Label>
+                        <Label htmlFor="exam" className="font-medium">Exam Mode (coming soon)</Label> {/* htmlFor="exam" */}
                         <p className="text-sm text-gray-500">Shows answers and explanations only at the end of the quiz</p>
                       </div>
                     </div>

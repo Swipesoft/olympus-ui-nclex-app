@@ -8,7 +8,9 @@ export async function POST(req: NextRequest) {
     const result = await syncUserWithDatabase();
     
     if (result) {
+      console.log("✅ API: User sync result:", result);
       return NextResponse.json({ success: true, user: result });
+
     } else {
       return NextResponse.json({ success: false, message: "User not authenticated" });
     }

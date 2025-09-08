@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { User, TrendingUp, Target, Award } from "lucide-react";
 import { QuizResult, PerformanceSummary } from "@/lib/adapters/sessionAdapter";
-
+import { ScoreTrend } from "@/lib/adapters/sessionAdapter";
 // Types
 interface QuizResult0 {
   id: string;
@@ -28,7 +28,7 @@ interface PerformanceSummary0 {
   //{ id: 5, title: "Node.js Basics", score: 16, total: 20, date: "2023-05-25" },
 //];
 
-const scoreTrend= [
+const scoreTrend0: ScoreTrend[]= [
   { quiz: "Science", score: 30 },
   { quiz: "Math", score: 70 },
   { quiz: "Logic", score: 85 },
@@ -42,19 +42,23 @@ const scoreTrend= [
   
 
 const performanceSummaryo: PerformanceSummary = {
-  averageScore: 82,
-  bestScore: 95,
-  improvement: 18,
+  averageScore: 0,
+  questionsAttempted: 0,
+  questionsRemaining: 368
 };
 
 type UserProfileProps = {
-  recentResults: QuizResult[];
+  fullName?: string;
+  recentResults: QuizResult[] | [];
   performanceSummary: PerformanceSummary;
+  scoreTrend: ScoreTrend[] | [];
 } 
 
 export default function UserProfile({
+  fullName = "dear NCLEX Olympian",
   recentResults,
   performanceSummary,
+  scoreTrend
 }: UserProfileProps) {
   const [chartDimensions, setChartDimensions] = useState({ width: 280, height: 120 });
   const chartContainerRef = useRef<HTMLDivElement>(null);
@@ -127,7 +131,7 @@ export default function UserProfile({
         <section className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-6 md:p-8 text-white">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="mb-4 md:mb-0">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Alex!</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, {fullName}!</h2>
               <p className="mb-4 opacity-90 text-sm md:text-base">Ready for your next challenge?</p>
               <button className="bg-white text-indigo-600 font-semibold py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors text-sm md:text-base">
                 Start New Quiz

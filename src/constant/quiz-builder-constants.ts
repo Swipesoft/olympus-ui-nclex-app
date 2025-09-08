@@ -1,8 +1,8 @@
 export const questionTypes = [
-    { id: 'MCQ', label: 'Multiple Choice', description: 'Traditional single-select questions' },
-    { id: 'SATA', label: 'SATA', description: 'Select All That Apply questions' },
-    { id: 'priority&delegation', label: 'Priority & Delegation', description: 'Leadership and management scenarios' },
-    { id: 'NGN', label: 'NGN', description: 'Next Generation NCLEX format questions' }
+    { id: 'MCQ', label: 'Multiple Choice', description: 'Traditional single-select questions', disabled: false },
+    { id: 'SATA', label: 'SATA', description: 'Select All That Apply questions' , disabled: false },
+    { id: 'priority&delegation', label: 'Priority & Delegation', description: 'Leadership and management scenarios', disabled: false },
+    { id: 'NGN', label: 'NGN (coming soon)', description: 'Next Generation NCLEX format questions', disabled: true }
 ]
 
 
