@@ -63,4 +63,4 @@ A sleek landing page built with Next.js 15 and Tailwind CSS. Features:
 # Database design principles 
 - Logs: NoSQL({sessionID, userID, questionID, score, selectedAnswers})
 
-- Questions: NoSQL({questionID, question, options, rationale...})
+- Questions: NoSQL({questionID, question, options, rationale...}) # trigger
