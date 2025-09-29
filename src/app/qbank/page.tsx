@@ -46,6 +46,7 @@ export default function NCLEXQbankApp() {
   /* ------------ state ------------ */
   const [view, setView] = useState<View>('build');
   const [result, setResult] = useState<QuizResult | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isSaving, setIsSaving] = useState(false);
   const { user, isLoaded } = useUser();
   const [quizData, setQuizData] = useState<QuizData | null>(null);

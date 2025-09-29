@@ -13,7 +13,7 @@ import { useItems } from '@/hooks/useItems';
 import { useUser  } from '@clerk/nextjs';   // authentication hook
 
 // IMPLEMENTATON OF QUIZ GENERATION WITH SERVER ACTIONS
-import { generateQuiz } from '@/app/actions/build-items-actions';
+//import { generateQuiz } from '@/app/actions/build-items-actions';
 
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 

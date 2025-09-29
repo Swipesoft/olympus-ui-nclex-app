@@ -5,6 +5,7 @@ import { getUnansweredQuestions } from '@/lib/db/build-items';
 import { adaptItemsToSchema , DbStandaloneItem} from '@/lib/adapters/questionAdapter';
 import { ObjectId } from 'mongodb'; 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface Question {
   id: string | any | ObjectId ;                // unique identifier for the question
   question: string;          // the question text

@@ -2,13 +2,13 @@
 import Image from "next/image";
 import Link  from "next/link";
 import { StaticImageData } from "next/image";
-import hero from "@/assets/images/hero.png";
+//import hero from "@/assets/images/hero.png";
 
-type Props = {
-    heroImage?: string | StaticImageData; // Optional prop for custom hero image
-};
+//type Props = {
+    //heroImage?: string | StaticImageData; // Optional prop for custom hero image
+//};
 
-const HeroBanner = ({ heroImage }: Props)=> {
+const HeroBanner = ()=> {
     //const imageSrc = heroImage || hero; // Use provided image or default to hero.png
   return (
     <div className="relative w-full h-screen flex justify-center flex-col bg-pink-800 bg_clip">
