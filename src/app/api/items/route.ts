@@ -8,7 +8,7 @@ import { getItems } from '@/lib/db/items';
 //import { get } from 'http';
 ////import clientPromise from '@/lib/mongodb'; //import reusable peer connection
 
-const dbName = 'olympus_qbank_cloud'; 
+//const dbName = 'olympus_qbank_cloud'; 
 //const collectionName = 'standalone'; 
 //const uri = process.env.MONGODB_URI!;
 
@@ -18,7 +18,7 @@ export async function GET() {
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const client = await clientPromise;
+  //const client = await clientPromise;
   //const db = client.db(dbName);
   // return all items from collection
   //const items = await db.collection(collectionName).find({}).toArray();

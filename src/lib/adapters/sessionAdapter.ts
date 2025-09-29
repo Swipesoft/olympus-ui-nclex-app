@@ -23,7 +23,7 @@ export interface DbSessionResult {
 export interface AllSessionsResult {
     sessions: DbSessionResult[];
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 
+
 export interface DbUserDynamicsResult{
     _id?: ObjectId; 
     clerkId: string; 
@@ -45,7 +45,7 @@ export interface QuizResult {
   date: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 
+
 export interface PerformanceSummary {
   averageScore: number;
   questionsAttempted: number;

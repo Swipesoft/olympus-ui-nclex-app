@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link  from "next/link";
-import { StaticImageData } from "next/image";
+//import { StaticImageData } from "next/image";
 //import hero from "@/assets/images/hero.png";
 
 //type Props = {

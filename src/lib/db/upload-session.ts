@@ -1,6 +1,7 @@
+// src/lib/db/upload-session.ts
 import clientPromise from '@/lib/mongodb';
 const dbName = 'olympus_users_cloud'; 
-const uri = process.env.MONGODB_URI!;
+//const uri = process.env.MONGODB_URI!;
 const collectionName = 'user_sessions'; 
 
 import { QuizResultDocument } from '@/constant/types';

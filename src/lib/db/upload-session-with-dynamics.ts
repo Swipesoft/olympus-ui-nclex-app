@@ -8,10 +8,10 @@ const sessionsCollectionName = 'user_sessions';
 const dynamicsCollectionName = 'user_dynamics';
 
 // Helper function to calculate overall accuracy
-// eslint-disable-next-line @typescript-eslint/no-explicit-any 
+
 async function calculateUserAccuracy(
   userId: string, 
-  db: any, 
+  db: any, // eslint-disable-next-line @typescript-eslint/no-explicit-any 
   session: ClientSession | undefined
 ): Promise<string> {
   const pipeline = [

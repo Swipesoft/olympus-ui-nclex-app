@@ -13,13 +13,13 @@ if (!process.env.MONGODB_URI) {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  // @ts-ignore
+  // @ts-expect-error: global Database Instance not found  1
   if (!global._mongoClientPromise) {
     client = new MongoClient(uri);
-    // @ts-ignore
+    // @ts-expect-error: global Database Instance not found 2
     global._mongoClientPromise = client.connect();
   }
-  // @ts-ignore
+  // @ts-expect-error: global Database Instance not found 3
   clientPromise = global._mongoClientPromise;
 } else {
   client = new MongoClient(uri);

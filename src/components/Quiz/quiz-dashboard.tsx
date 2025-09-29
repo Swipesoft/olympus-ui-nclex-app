@@ -1,12 +1,12 @@
 'use client';
 // src/components/Quiz/quiz-dashboard.tsx
 import { Button } from '@/components/ui/button';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 
+
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
+  CardFooter, // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
