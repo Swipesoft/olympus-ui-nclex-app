@@ -23,8 +23,8 @@ export interface DbSessionResult {
 export interface AllSessionsResult {
     sessions: DbSessionResult[];
 }
-
-interface DbUserDynamicsResult{
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
+export interface DbUserDynamicsResult{
     _id?: ObjectId; 
     clerkId: string; 
     accuracy: number;
@@ -45,7 +45,7 @@ export interface QuizResult {
   date: string;
 }
 
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 export interface PerformanceSummary {
   averageScore: number;
   questionsAttempted: number;
@@ -57,6 +57,7 @@ export interface ScoreTrend {
   score: number; // percentage
 } 
 // Mock data /////////////////////////////////////////////////////////////////////
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const recentResults: QuizResult[] = [
   { id: "abc", title: "Practice 1", score: 18, total: 20, date: "2023-05-15" },
   { id: "def", title: "Practice 2", score: 15, total: 20, date: "2023-05-18" },
@@ -64,7 +65,7 @@ const recentResults: QuizResult[] = [
   { id: "xyz", title: "Practice 4", score: 19, total: 20, date: "2023-05-22" },
   { id: "yxz", title: "Practice 5", score: 16, total: 20, date: "2023-05-25" },
 ];
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const scoreTrend= [
   { quiz: "Practice 1", score: 90 },
   { quiz: "Practice 2", score: 75 },
@@ -72,12 +73,11 @@ const scoreTrend= [
   { quiz: "Practice 4", score: 95},
   { quiz: "Practice 5", score: 80},
 ];
-
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const performanceSummary: PerformanceSummary = {
-  averageScore: 82,
-  bestScore: 95,
-  improvement: 18,
+  averageScore: 85.0,
+  questionsAttempted: 100,
+  questionsRemaining: 268,
 };
 
 // 3. Adapter function to convert DbSessionResult to QuizResult for user-profile component ////////////////////////////////
@@ -100,15 +100,16 @@ export function adaptSessionDataToProfileData_old( doc :  AllSessionsResult) {
     const recentResults = adaptedResults //.slice(0, 5);
 
     // Score trend for chart (last 5 sessions)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     const scoreTrend = adaptedResults.slice(0, 5).map((result) => ({
         quiz: result.title,
         score: (result.score / result.total) * 100, // Convert to percentage
     })).reverse(); // Reverse to have oldest first for chart
 
     // Performance summary
-    let averageScore = 0;
-    let bestScore = 0;
-    let improvement = 0;
+    //let averageScore = 0;
+    //let bestScore = 0;
+    //let improvement = 0;
 
     //if (dynamicsDoc) {
         //averageScore = dynamicsDoc.accuracy * 100; // Convert to percentage
@@ -161,6 +162,7 @@ export function adaptSessionDataToProfileData(
     adaptedResults.length <= 5 ? adaptedResults : adaptedResults.slice(0, 5);
 
   // Strip out raw Date before returning
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   const recentResults: QuizResult[] = limitedResults.map(({ completedAt, ...rest }) => rest);
 
   // --- Performance Summary ---

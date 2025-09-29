@@ -1,6 +1,7 @@
 'use client';
 // src/components/Quiz/quiz-dashboard.tsx
 import { Button } from '@/components/ui/button';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 import {
   Card,
   CardContent,

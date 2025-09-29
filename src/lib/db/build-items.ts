@@ -1,7 +1,8 @@
 import clientPromise from "@/lib/mongodb";
 import { ObjectId } from 'mongodb';
+import { DbStandaloneItem } from "@/lib/adapters/questionAdapter";
 
-export async function getUnansweredQuestions(clerkId: string, questionCount: number) {
+export async function getUnansweredQuestions(clerkId: string, questionCount: number): Promise<DbStandaloneItem[]> {
   try {
     const client = await clientPromise;
     
@@ -15,6 +16,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
     const answeredQuestionIds: string[] = [];
     sessions.forEach(session => {
       if (session.answers && Array.isArray(session.answers)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         session.answers.forEach((answer: any) => {
           if (answer.questionId) {
             answeredQuestionIds.push(answer.questionId);

@@ -5,21 +5,21 @@ import { auth } from "@clerk/nextjs/server";
 import { postSession } from "@/lib/db/upload-session";
 import { QuizApiError, QuizApiResponse, QuizResult, QuizResultDocument} from "@/constant/types";
 // app/api/items/route.ts
-import { getItems } from '@/lib/db/items';
+//import { getItems } from '@/lib/db/items';
 
 const dbName = 'olympus_users_cloud'; 
-const collectionName = 'user_sessions'; 
-const uri = process.env.MONGODB_URI!;
+//const collectionName = 'user_sessions'; 
+//const uri = process.env.MONGODB_URI!;
 
 //export async function POST(req: NextRequest): Promise<NextResponse<ApiResponse | ErrorResponse>> {
   
 export async function POST(req: NextRequest): Promise<NextResponse<QuizApiResponse| QuizApiError>>{
   const { userId }  = await auth();
   if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json<QuizApiError>({ error: 'Unauthorized' }, { status: 401 });
   }
   const client = await clientPromise;
-  const db = client.db(dbName);
+  //const db = client.db(dbName);
   const quizSession : QuizResult = await req.json(); //parse session from req body
   // Create document to insert as session log in monogodb
   const sessionLog: QuizResultDocument = {

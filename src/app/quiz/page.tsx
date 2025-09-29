@@ -2,16 +2,18 @@
 'use client';
 import { useState , useEffect} from 'react';
 import { QuizResult } from '@/constant/types';
-
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 import QuizOnboardPage from '@/components/Quiz/quiz-onboard';
-import MCQPage  from '@/components/Quiz/quiz-mcq';   //not used as it only displays questions without rationale 
+//import MCQPage  from '@/components/Quiz/quiz-mcq';   //not used as it only displays questions without rationale 
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
-import { nclexQuestions } from '@/constant/constants';
+//import { nclexQuestions } from '@/constant/constants';
 import MCQRationalePage from '@/components/Quiz/quiz-rationale'; // used for displaying questions with rationale after submission
 import MCQReviewPage from '@/components/Quiz/quiz-review';
 import { useItems } from '@/hooks/useItems';
 import { useUser  } from '@clerk/nextjs';   // authentication hook
+
+// IMPLEMENTATON OF QUIZ GENERATION WITH SERVER ACTIONS
+import { generateQuiz } from '@/app/actions/build-items-actions';
 
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 
@@ -21,6 +23,7 @@ export default function NCLEXQuizApp() {
   /* ------------ state ------------ */
   const [view, setView] = useState<View>('home');
   const [result, setResult] = useState<QuizResult | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isSaving, setIsSaving] = useState(false); // state to track if saving is in progress
   const { user , isLoaded } = useUser();   // Clerk user hook 
   
@@ -100,6 +103,7 @@ export default function NCLEXQuizApp() {
 
     // Save to database 'log collections' via API
     const quizResult : QuizResult= {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       score: processed.filter((a: any) => a.isCorrect).length,
       totalQuestions: nclexQuestions.length,
       timeTaken,

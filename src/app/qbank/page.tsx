@@ -1,14 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { QuizResult } from '@/constant/types';
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 import QuizOnboardPage from '@/components/Quiz/quiz-onboard';
-import MCQPage from '@/components/Quiz/quiz-mcq';
+//import MCQPage from '@/components/Quiz/quiz-mcq';
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import MCQRationalePage from '@/components/Quiz/quiz-rationale';
 import MCQReviewPage from '@/components/Quiz/quiz-review';
 import NCLEXQuizBuilder from '@/components/QuizBuilder/quiz-builder';
-import { useItems } from '@/hooks/useItems';
+//import { useItems } from '@/hooks/useItems';
 import { useUser } from '@clerk/nextjs';
 import { generateQuiz } from '@/app/actions/build-items-actions';
 
@@ -25,13 +25,22 @@ interface QuizConfig {
   includeImages: boolean;
   includeAudio: boolean;
 }
+// server action return type Interface
+interface Question {
+  id: string;                // unique identifier for the question
+  question: string;          // the question text
+  options: string[];         // multiple choice options
+  correctAnswer: number[];   // index(es) of the correct option(s)
+  explanation: string;       // rationale or teaching point
+}
 
-type View = 'build' | 'home' | 'quiz' | 'dashboard' | 'review';
-
+// server action return type Interface
 interface QuizData {
-  questions: any[];
+  questions: Question[];
   config: QuizConfig;
 }
+
+type View = 'build' | 'home' | 'quiz' | 'dashboard' | 'review';
 
 export default function NCLEXQbankApp() {
   /* ------------ state ------------ */
@@ -135,6 +144,7 @@ export default function NCLEXQbankApp() {
     console.log("👤 Processed answers:", processed);
 
     const quizResult: QuizResult = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       score: processed.filter((a: any) => a.isCorrect).length,
       totalQuestions: quizData.questions.length,
       timeTaken,

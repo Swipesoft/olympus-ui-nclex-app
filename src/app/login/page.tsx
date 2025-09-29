@@ -22,11 +22,13 @@ export default function LoginPage() {
       </div>
       <div className="bg-muted relative hidden lg:block">
         {/* experiment the tailwind object-fill vs object-cover vs object-contain on image*/}
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src="./c1.png"
           alt="Image"
           className="absolute inset-0 h-full w-full object-contain dark:brightness-[0.2] dark:grayscale"
         />
+        
       </div>
     </div>
   )

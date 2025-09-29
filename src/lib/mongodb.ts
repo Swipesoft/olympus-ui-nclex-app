@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI!;
-const options = {};
+//const options = {};
 
 // In development, use a global variable so the value
 // is preserved across hot reloads in Next.js

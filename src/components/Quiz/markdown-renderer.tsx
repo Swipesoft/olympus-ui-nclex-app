@@ -9,7 +9,7 @@ interface MarkdownRendererProps {
 export default function MarkdownRenderer({ content }:MarkdownRendererProps){
   if (!content) return null;
 
-  let processedContent = content
+  const processedContent = content
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.*?)__/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')

@@ -1,7 +1,7 @@
 "use client";
 import UserProfile from '@/components/Profile/user-profile'; 
 import { useState } from 'react';
-import MCQRationalePage from '@/components/Quiz/quiz-rationale';
+//import MCQRationalePage from '@/components/Quiz/quiz-rationale';
 import MCQReviewPage from '@/components/Quiz/quiz-review'; 
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import { QuizResult } from '@/constant/types'; 
@@ -14,7 +14,9 @@ type View = 'profile' | 'dashboard' | 'review';
 export default function ProfilePageContainer() {
     // fetch user profile data using custom hook 
     const { data: sessionData, isLoading: isSessionLoading, isError: isSessionError } = useSession();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { data: syncData, isLoading: isSyncLoading, isError: isSyncError } = useSyncUser();
+    
     // Destructure recentResults and performanceSummary from sessionData if available
     const { recentResults = [], performanceSummary , scoreTrend} = sessionData ?? {};
 
@@ -25,11 +27,11 @@ export default function ProfilePageContainer() {
     const fullName =
         syncData?.success && syncData.user
             ? `${capitalize(syncData.user.firstName ?? '')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
-            : '';
-
+    : '';
 
     //manage state for view switching between profile and review of past quizzes/sessions 
     const [view, setView] = useState<View>('profile');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [result, setResult] = useState<QuizResult | null>(null); 
 
     // Destructure performance summary from recentResults if available
@@ -52,7 +54,7 @@ export default function ProfilePageContainer() {
                         scoreTrend={scoreTrend}
                     />;
 
-                    
+
     // Not working yet - needs to pass nclexQuestions prop as null for now
     if (view === 'dashboard' && result)
         return (

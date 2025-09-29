@@ -2,16 +2,30 @@
 'use server'
 
 import { getUnansweredQuestions } from '@/lib/db/build-items';
-import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
+import { adaptItemsToSchema , DbStandaloneItem} from '@/lib/adapters/questionAdapter';
+import { ObjectId } from 'mongodb'; 
 
-export async function generateQuiz(clerkId: string, questionCount: number) {
+interface Question {
+  id: string | any | ObjectId ;                // unique identifier for the question
+  question: string;          // the question text
+  options: string[];         // multiple choice options
+  correctAnswer: number[];   // index(es) of the correct option(s)
+  explanation: string;       // rationale or teaching point
+}
+
+type GenerateQuizResult =
+  | { success: true; questions: Question[] }
+  | { success: false; error: string }; 
+
+
+export async function generateQuiz(clerkId: string, questionCount: number) :  Promise<GenerateQuizResult> {
   try {
-    const questions = await getUnansweredQuestions(clerkId, questionCount);
+    const questions: DbStandaloneItem[] = await getUnansweredQuestions(clerkId, questionCount);
     
     // Convert MongoDB documents to plain objects first, then adapt to your schema
-    const serializedQuestions = questions.map(question => {
+    const serializedQuestions:Question[] = questions.map(question => {
       // First convert ObjectIds to strings
-      const plainQuestion = {
+      const plainQuestion: DbStandaloneItem = {
         ...question,
         _id: question._id.toString(),
       };

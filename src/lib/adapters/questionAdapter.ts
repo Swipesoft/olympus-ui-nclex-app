@@ -1,14 +1,19 @@
 
+import { ObjectId } from "mongodb";
 
-// Adapter to Convert the MongoDB nclex items record shape into the shape our frontend expects.
-export function adaptItemsToSchema(doc: {
-  _id: string | any;
+export interface DbStandaloneItem {
+  _id: string | ObjectId | any;
   question_string: string;
   question_options: string[];
   verified_answer: number[];
   simplified_explanation: string;
   contrastive_rationale: string;
-}): {
+}
+
+
+// Adapter to Convert the MongoDB nclex items record shape into the shape our frontend expects.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function adaptItemsToSchema(doc: DbStandaloneItem): {
   id: string;
   question: string;
   options: string[];

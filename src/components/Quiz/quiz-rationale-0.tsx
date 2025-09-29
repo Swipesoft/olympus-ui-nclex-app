@@ -1,5 +1,5 @@
 'use client';
-
+// 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label';
 //import { nclexQuestions } from '@/constant/constants';
 import { useItems } from '@/hooks/useItems';            // custom hook to fetch questions from /api/items
 import MarkdownRenderer from './markdown-renderer';
-import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
+//import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 
 // fetches questions from /api/items and displays them one by one with options
 //const res = await fetch('/api/items');

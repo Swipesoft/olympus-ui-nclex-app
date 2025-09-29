@@ -2,7 +2,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { syncUserWithDatabase } from '@/lib/auth'
 
-export async function POST(req: NextRequest) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function POST(_req: NextRequest) {
   try {
     console.log("🔄 API: Starting user sync...");
     const result = await syncUserWithDatabase();
@@ -20,3 +21,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: errorMessage }, { status: 500 });
   }
 }
+
+
+// @params req renamed to _req to avoid lint error for unused variable

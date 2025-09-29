@@ -3,7 +3,7 @@ import clientPromise  from "@/lib/mongodb"
 
 const dbName = 'olympus_users_cloud'; 
 const collectionName = 'user_sessions'; 
-const uri = process.env.MONGODB_URI!; 
+//const uri = process.env.MONGODB_URI!; 
 
 
 export async function getUserSessions(clerkId: string) {
@@ -19,5 +19,3 @@ export async function getUserSessions(clerkId: string) {
 
 // testing the github actions with the trivial change
 // another trivial change to test the github actions
-// yet another trivial change to test the github actions
-// final trivial change to test the github actions

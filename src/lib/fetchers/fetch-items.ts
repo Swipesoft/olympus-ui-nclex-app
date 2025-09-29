@@ -1,6 +1,6 @@
 'use server';
-import { cookies } from "next/headers";
-import { adaptItemsToSchema } from "../adapters/questionAdapter";
+//import { cookies } from "next/headers";
+//import { adaptItemsToSchema } from "../adapters/questionAdapter";
 
 // fetches questions from /api/items and displays them one by one with options
 //const res = await fetch('/api/items');

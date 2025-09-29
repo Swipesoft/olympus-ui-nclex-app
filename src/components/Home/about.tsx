@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { StaticImageData } from "next/image";
+//import { StaticImageData } from "next/image";
 import h1 from "@/assets/images/h1.png"; // Assuming h1.png is the image you want to use 
 
 type Props = {
