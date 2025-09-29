@@ -24,10 +24,7 @@ export default function ProfilePageContainer() {
     function capitalize(word: string) {
         return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '';
     }
-    const fullName =
-        syncData?.success && syncData.user
-            ? `${capitalize(syncData.user.firstName ?? '')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
-    : '';
+    
 
     //manage state for view switching between profile and review of past quizzes/sessions 
     const [view, setView] = useState<View>('profile');
@@ -45,6 +42,13 @@ export default function ProfilePageContainer() {
 
     const switchToReview = () => setView('review'); // function to switch to review past quizzes/sessions
     const switchToProfile = () => setView('profile'); // function to switch back to profile view 
+
+    const fullName =
+        syncData?.success && syncData.user
+            ? `${capitalize(syncData.user.firstName ?? 'Boo')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
+    : '';
+
+    //console.log(`sync user: ${syncData.user.firstName}`); 
 
     //render based on current view state 
     if (view === 'profile') return <UserProfile

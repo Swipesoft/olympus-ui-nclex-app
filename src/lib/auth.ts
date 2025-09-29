@@ -79,9 +79,10 @@ export async function syncUserWithDatabase() {
         clerkId: clerkUser.id
       });
       console.log("User created:", mongodb_result.insertedId);
+      return mongodb_result; 
     }
 
-    return mongodb_result;  // result from 'prisma' in v1
+    return existingUser;  // result from 'prisma' in v1
 
   } catch (error) {
   const err = error as Error;
