@@ -12,7 +12,7 @@ const dbName = 'olympus_qbank_cloud';
 const collectionName = 'standalone'; 
 const uri = process.env.MONGODB_URI!;
 
-
+// This is a way to stimulate CI/CD pipeline actions
 export async function GET(request: NextRequest) {
   const { userId }  = await auth();
   if (!userId) {
