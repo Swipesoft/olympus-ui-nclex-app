@@ -133,9 +133,11 @@ export default function UserProfile({
             <div className="mb-4 md:mb-0">
               <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, {fullName}!</h2>
               <p className="mb-4 opacity-90 text-sm md:text-base">Ready for your next challenge?</p>
+              <Link href="/qbank"> 
               <button className="bg-white text-indigo-600 font-semibold py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors text-sm md:text-base">
                 Start New Quiz
               </button>
+              </Link>
             </div>
             <div className="bg-indigo-400 p-3 rounded-full">
               <Target className="text-white" size={24} />
