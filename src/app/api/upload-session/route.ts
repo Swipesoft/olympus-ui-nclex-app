@@ -21,12 +21,20 @@ export async function POST(req: NextRequest): Promise<NextResponse<QuizApiRespon
   //const client = await clientPromise;
   //const db = client.db(dbName);
   const quizSession : QuizResult = await req.json(); //parse session from req body
+  
   // Create document to insert as session log in monogodb
+  // version-history: // v1: answers: quizSession.answers,// v2 answers questionId (int->str)
   const sessionLog: QuizResultDocument = {
     userId,
     score: quizSession.score,
     totalQuestions: quizSession.totalQuestions,
-    answers: quizSession.answers,
+    answers: quizSession.answers.map(a => ({
+      questionId: String(a.questionId),        // cast number → string
+      selectedAnswers: a.selectedAnswer,       // rename
+      correctAnswers: a.correctAnswer,         // rename
+      isCorrect: a.isCorrect,
+      })),
+    timeTaken: quizSession.timeTaken,
     percentage: (quizSession.score / quizSession.totalQuestions) * 100,
     completedAt: new Date(),
     createdAt: new Date(),

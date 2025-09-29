@@ -65,9 +65,9 @@ export default function ProfilePageContainer() {
                 nclexQuestions={null}
             />
             );
-    // Not working yet - needs to pass nclexQuestions prop as null for now
+    // Not working yet - needs to pass nclexQuestions prop as empty array[] for now
     if (view === 'review' && result) 
-        return <MCQReviewPage nclexQuestions={null} result={result} onExit={() => setView('profile')} />; 
+        return <MCQReviewPage nclexQuestions={[]} result={result} onExit={() => setView('profile')} />; 
 
     return <div>fallback null</div> // fallback return
 }

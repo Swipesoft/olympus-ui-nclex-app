@@ -26,6 +26,7 @@ interface QuizConfig {
   includeAudio: boolean;
 }
 // server action return type Interface
+// NB: an alias type for nclexQuestion in  @src/constants/types.ts
 interface Question {
   id: string;                // unique identifier for the question
   question: string;          // the question text
@@ -135,9 +136,9 @@ export default function NCLEXQbankApp() {
         [...userSet].every((idx) => correctSet.has(idx));
 
       return {
-        questionId: q.id,
-        selectedAnswers: answers[i] ?? [],
-        correctAnswers: q.correctAnswer,
+        questionId: String(q.id),  // stringify all IDs // v1: number
+        selectedAnswer: answers[i] ?? [],
+        correctAnswer: q.correctAnswer,
         isCorrect,
       };
     });

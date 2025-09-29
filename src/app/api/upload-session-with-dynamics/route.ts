@@ -41,12 +41,17 @@ export async function POST(req: NextRequest): Promise<NextResponse<QuizApiRespon
       );
     }
 
-    // Create document to insert as session log in MongoDB
+    // Create document to insert as session log in MongoDB // v1: answers: quizSession.answers,// v2 answers questionId (int->str)
     const sessionLog: QuizResultDocument = {
       userId,
       score: quizSession.score,
       totalQuestions: quizSession.totalQuestions,
-      answers: quizSession.answers,
+      answers: quizSession.answers.map(a => ({
+        questionId: String(a.questionId),
+        selectedAnswers: a.selectedAnswer,   // rename to match type
+        correctAnswers: a.correctAnswer,     // rename to match type
+        isCorrect: a.isCorrect,
+      })),
       timeTaken: quizSession.timeTaken,
       percentage: (quizSession.score / quizSession.totalQuestions) * 100,
       completedAt: new Date(),

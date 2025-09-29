@@ -5,7 +5,7 @@ export interface QuizResult {
   totalQuestions: number;
   timeTaken: number;
   answers: Array<{
-    questionId: number;
+    questionId: string;    //modified to keep all ID stringifed //v1:number;
     selectedAnswer: number[]; //modified for SATA
     correctAnswer: number[];  //modified for SATA
     isCorrect: boolean;
@@ -14,7 +14,7 @@ export interface QuizResult {
 
 
 export interface NclexQuestion {
-  id: number;
+  id: string; //stringify all IDs  //v1:number;
   question: string;
   options: string[];
   correctAnswer: number[];  // <-- changed to array for multi-select in SATA
