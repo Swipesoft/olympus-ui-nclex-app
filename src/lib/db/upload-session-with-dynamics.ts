@@ -8,10 +8,12 @@ const sessionsCollectionName = 'user_sessions';
 const dynamicsCollectionName = 'user_dynamics';
 
 // Helper function to calculate overall accuracy
+
 async function calculateUserAccuracy(
   userId: string, 
-  db: any, 
-  session: ClientSession
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  db: any,  
+  session: ClientSession | undefined
 ): Promise<string> {
   const pipeline = [
     { $match: { userId } },
@@ -48,7 +50,7 @@ export async function postSessionWithDynamics(
 ): Promise<SessionUploadResult> {
   const client = await clientPromise;
   const db = client.db(dbName);
-  let session: ClientSession | null = null;
+  let session: ClientSession | undefined; // null = null; # REFACTORED null to undefined
 
   try {
     // Start a session for transaction

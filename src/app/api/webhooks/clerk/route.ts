@@ -2,7 +2,8 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import { prisma } from '@/lib/prisma'
+//import { prisma } from '@/lib/prisma'
+import clientPromise  from '@/lib/mongodb';
 
 export async function POST(req: Request) {
   const secret = process.env.CLERK_WEBHOOK_SECRET
@@ -19,28 +20,49 @@ export async function POST(req: Request) {
 
   console.log(evt.data); 
 
+  // Connect to MongoDB 
+  const client = await clientPromise; 
+  const db = client.db("olympus_users_cloud")
+  const users = db.collection("users")
+
   switch (evt.type) {
     case 'user.created':
     case 'user.updated':
-      await prisma.user.upsert({
-        where: { clerkId: evt.data.id },
-        update: {
-          email: evt.data.email_addresses?.[0]?.email_address,
-          firstName: `${evt.data.first_name || ''}`.trim(), 
-          lastName: `${evt.data.last_name || ''}`.trim(),
-          profileImageUrl: evt.data.image_url,
+      //await prisma.user.upsert({
+        //where: { clerkId: evt.data.id },
+        //update: {
+          //email: evt.data.email_addresses?.[0]?.email_address,
+          //firstName: `${evt.data.first_name || ''}`.trim(), 
+          //lastName: `${evt.data.last_name || ''}`.trim(),
+          //profileImageUrl: evt.data.image_url,
+        //},
+        //create: {
+          //clerkId: evt.data.id,
+          //email: evt.data.email_addresses?.[0]?.email_address,
+          //firstName: `${evt.data.first_name || ''}`.trim(), 
+          //lastName: `${evt.data.last_name || ''}`.trim(),
+          //profileImageUrl: evt.data.image_url,
+        //},
+      //})
+      // USE MONGODB instead of PRISMA 
+      await users.updateOne(
+        { clerkId: evt.data.id }, // filter
+        {
+          $set: {
+            clerkId: evt.data.id,
+            email: evt.data.email_addresses?.[0]?.email_address,
+            firstName: `${evt.data.first_name || ""}`.trim(),
+            lastName: `${evt.data.last_name || ""}`.trim(),
+            profileImageUrl: evt.data.image_url,
+          },
         },
-        create: {
-          clerkId: evt.data.id,
-          email: evt.data.email_addresses?.[0]?.email_address,
-          firstName: `${evt.data.first_name || ''}`.trim(), 
-          lastName: `${evt.data.last_name || ''}`.trim(),
-          profileImageUrl: evt.data.image_url,
-        },
-      })
-      break
+        { upsert: true }
+      );
+      break;
     case 'user.deleted':
-      await prisma.user.delete({ where: { clerkId: evt.data.id } })
+      //await prisma.user.delete({ where: { clerkId: evt.data.id } })
+      // Use MongoDB instead of Prisma 
+      await users.deleteOne({ clerkId: evt.data.id });
       break
   }
 

@@ -1,5 +1,5 @@
 'use client';
-
+// 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label';
 //import { nclexQuestions } from '@/constant/constants';
 import { useItems } from '@/hooks/useItems';            // custom hook to fetch questions from /api/items
 import MarkdownRenderer from './markdown-renderer';
-import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
+//import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 
 // fetches questions from /api/items and displays them one by one with options
 //const res = await fetch('/api/items');
@@ -122,7 +122,8 @@ export default function MCQRationalePage({ onSubmit, onExit }: Props) {
             {isMulti ? (
               // multi-select checkboxes
               <div className="space-y-3">
-                {question.options.map((opt, i) => (
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                {question.options.map((opt:any, i:any) => (
                   <div
                     key={i}
                     className="flex items-center space-x-2"
@@ -146,7 +147,8 @@ export default function MCQRationalePage({ onSubmit, onExit }: Props) {
                 onValueChange={(v) => handleToggle(Number(v))}
                 disabled={showExplanation}
               >
-                {question.options.map((opt, i) => (
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                {question.options.map((opt:any, i:any) => (
                   <div key={i} className="flex items-center space-x-2 mb-3">
                     <RadioGroupItem value={i.toString()} id={`opt-${i}`} />
                     <Label htmlFor={`opt-${i}`} className="cursor-pointer">

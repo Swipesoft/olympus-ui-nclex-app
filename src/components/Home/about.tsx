@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
-import { StaticImageData } from "next/image";
-import h1 from "@/assets/images/h1.png"; // Assuming h1.png is the image you want to use 
+//import { StaticImageData } from "next/image";
+//import h1 from "@/assets/images/h1.png"; // Assuming h1.png is the image you want to use 
 
 type Props = {
     imageOrder: string,
@@ -74,7 +74,7 @@ const About = ({imageOrder, textOrder, title, linkText}: Props) => {
                  data-aos-anchor-placement="top-center"
                 className={`${imageOrder}`}>
             
-                    <Image alt="Headphone" src={h1} width={380} height={380} />
+                    <Image alt="Headphone" src="/h1.png" width={380} height={380} />
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 import clientPromise from '@/lib/mongodb';
-import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
+//import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 //import { adaptItemsToSchema } from '@/lib/adapters/questionAdapter';
 
 const dbName = 'olympus_qbank_cloud'; 
-const uri = process.env.MONGODB_URI!;
+//const uri = process.env.MONGODB_URI!;
 
 
 export async function getItems() {

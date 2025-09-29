@@ -1,32 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
-import clientPromise from "@/lib/mongodb"; 
+//import clientPromise from "@/lib/mongodb"; 
 import { auth } from "@clerk/nextjs/server"; 
 //import {  QuizResult  } from "@/constant/types";
 import { postSession } from "@/lib/db/upload-session";
 import { QuizApiError, QuizApiResponse, QuizResult, QuizResultDocument} from "@/constant/types";
 // app/api/items/route.ts
-import { getItems } from '@/lib/db/items';
+//import { getItems } from '@/lib/db/items';
 
-const dbName = 'olympus_users_cloud'; 
-const collectionName = 'user_sessions'; 
-const uri = process.env.MONGODB_URI!;
+//const dbName = 'olympus_users_cloud'; 
+//const collectionName = 'user_sessions'; 
+//const uri = process.env.MONGODB_URI!;
 
 //export async function POST(req: NextRequest): Promise<NextResponse<ApiResponse | ErrorResponse>> {
   
 export async function POST(req: NextRequest): Promise<NextResponse<QuizApiResponse| QuizApiError>>{
   const { userId }  = await auth();
   if (!userId) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json<QuizApiError>({ error: 'Unauthorized' }, { status: 401 });
   }
-  const client = await clientPromise;
-  const db = client.db(dbName);
+  //const client = await clientPromise;
+  //const db = client.db(dbName);
   const quizSession : QuizResult = await req.json(); //parse session from req body
+  
   // Create document to insert as session log in monogodb
+  // version-history: // v1: answers: quizSession.answers,// v2 answers questionId (int->str)
   const sessionLog: QuizResultDocument = {
     userId,
     score: quizSession.score,
     totalQuestions: quizSession.totalQuestions,
-    answers: quizSession.answers,
+    answers: quizSession.answers.map(a => ({
+      questionId: String(a.questionId),        // cast number → string
+      selectedAnswers: a.selectedAnswer,       // rename
+      correctAnswers: a.correctAnswer,         // rename
+      isCorrect: a.isCorrect,
+      })),
+    timeTaken: quizSession.timeTaken,
     percentage: (quizSession.score / quizSession.totalQuestions) * 100,
     completedAt: new Date(),
     createdAt: new Date(),

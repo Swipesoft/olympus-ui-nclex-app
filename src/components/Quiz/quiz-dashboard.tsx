@@ -1,11 +1,11 @@
 'use client';
 // src/components/Quiz/quiz-dashboard.tsx
 import { Button } from '@/components/ui/button';
+
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -21,7 +21,7 @@ export default function QuizDashboardPage({
   onReview,
 }: {
   result: QuizResult;
-  nclexQuestions: NclexQuestion[];
+  nclexQuestions: NclexQuestion[] | null;
   onRestart: () => void;
   onReview: () => void;
 }) {
@@ -117,9 +117,9 @@ export default function QuizDashboardPage({
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {nclexQuestions.map((q, i) => {
-                const userAnswers = result.answers[i]?.selectedAnswers || [];
-                const correctAnswers = result.answers[i]?.correctAnswers || [];
+              {(nclexQuestions ?? []).map((q, i) => {
+                const userAnswers = result.answers[i]?.selectedAnswer|| [];
+                const correctAnswers = result.answers[i]?.correctAnswer || [];
                 const isCorrect = result.answers[i]?.isCorrect || false;
 
                 return (

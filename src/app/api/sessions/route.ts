@@ -1,11 +1,11 @@
 //app/api/sessions/route.ts 
 import { NextResponse } from "next/server";
-import clientPromise  from "@/lib/mongodb"; 
+//import clientPromise  from "@/lib/mongodb"; 
 import {auth} from '@clerk/nextjs/server'; 
 // Specific util functions for fetching sessions from DB  // getUserSessions(clerkId: string)
 import { getUserSessions } from "@/lib/db/sessions"; 
 import { AllSessionsResult } from "@/lib/adapters/sessionAdapter";
-import {get} from 'http'; 
+//import {get} from 'http'; 
 
 
 export async function GET() { 

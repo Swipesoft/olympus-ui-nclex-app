@@ -24,7 +24,7 @@ export const useItems = () => {
         throw new Error('Failed to fetch items');
       }
 
-      let data = res.json();
+      const data = res.json();
       return (await data).map(adaptItemsToSchema);
     },
     // staleTime: 1000 * 60 * 5,

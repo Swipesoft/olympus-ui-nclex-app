@@ -1,6 +1,6 @@
 // app/sign-in/[[...sign-in]]/page.tsx
 import { SignIn } from '@clerk/nextjs'
-import Navbar from '@/components/Home/Navbar/navbar'
+//import Navbar from '@/components/Home/Navbar/navbar'
 
 //fixed top-0 w-full z-50 bg-white shadow-md -> small screens move to the top 
 //flex min-h-screen items-center justify-center bg-gray-50 px-4 -> vanilla implementation from web tutorial

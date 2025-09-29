@@ -1,7 +1,8 @@
 import clientPromise from "@/lib/mongodb";
 import { ObjectId } from 'mongodb';
+import { DbStandaloneItem } from "@/lib/adapters/questionAdapter";
 
-export async function getUnansweredQuestions(clerkId: string, questionCount: number) {
+export async function getUnansweredQuestions(clerkId: string, questionCount: number): Promise<DbStandaloneItem[]> {
   try {
     const client = await clientPromise;
     
@@ -15,6 +16,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
     const answeredQuestionIds: string[] = [];
     sessions.forEach(session => {
       if (session.answers && Array.isArray(session.answers)) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         session.answers.forEach((answer: any) => {
           if (answer.questionId) {
             answeredQuestionIds.push(answer.questionId);
@@ -38,7 +40,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
 
     // First try to get unanswered questions
     const unansweredQuestions = await standaloneCollection
-      .aggregate([
+      .aggregate<DbStandaloneItem>([
         { $match: { _id: { $nin: answeredObjectIds } } },
         { $sample: { size: questionCount } }
       ])
@@ -50,7 +52,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
       
       // Get additional questions (can include previously answered ones)
       const additionalQuestions = await standaloneCollection
-        .aggregate([
+        .aggregate<DbStandaloneItem>([
           { $match: { _id: { $nin: unansweredQuestions.map(q => q._id) } } },
           { $sample: { size: remaining } }
         ])

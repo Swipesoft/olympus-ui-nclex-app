@@ -2,6 +2,7 @@
 'use client'; 
 
 import { useQuery } from '@tanstack/react-query'; 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 import { QuizResultDocument } from '@/constant/types'; 
 import { adaptSessionDataToProfileData } from '@/lib/adapters/sessionAdapter'; 
 import { AllSessionsResult } from '@/lib/adapters/sessionAdapter';
@@ -26,7 +27,7 @@ export const useSession = () => {
                 throw new Error('Failed to fetch sessions'); 
             } 
 
-            let data: AllSessionsResult = await res.json(); 
+            const data: AllSessionsResult = await res.json(); 
             console.log("Fetched Tanstack sessions data:", data);
             
             return adaptSessionDataToProfileData(data);

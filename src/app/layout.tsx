@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Provider from "@/components/Hoc/provider";

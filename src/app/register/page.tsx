@@ -20,6 +20,7 @@ export default function SignupPage() {
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/c1.png?height=800&width=600"
           alt="People collaborating in a modern office workspace"

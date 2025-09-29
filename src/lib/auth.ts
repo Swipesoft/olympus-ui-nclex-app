@@ -1,5 +1,5 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { prisma } from '@/lib/prisma'
+//import { prisma } from '@/lib/prisma'
 import clientPromise from '@/lib/mongodb';
 
 export async function syncUserWithDatabase() {
@@ -35,15 +35,15 @@ export async function syncUserWithDatabase() {
       profileImageUrl: clerkUser.imageUrl || '',
     }
 
-    console.log("Attempting to upsert user:", { clerkId: clerkUser.id, ...data });
+    //console.log("Attempting to upsert user:", { clerkId: clerkUser.id, ...data });
     //prisma writes 
-    const result = await prisma.user.upsert({
-      where: { clerkId: clerkUser.id },
-      update: data,
-      create: { clerkId: clerkUser.id, ...data },
-    })
+    //const result = await prisma.user.upsert({
+      //where: { clerkId: clerkUser.id },
+      //update: data,
+      //create: { clerkId: clerkUser.id, ...data },
+    //})
 
-    console.log("User upserted successfully:", result);
+    //console.log("User upserted successfully:", result);
     //return result;
 
     // mongoDB writes 
@@ -81,7 +81,7 @@ export async function syncUserWithDatabase() {
       console.log("User created:", mongodb_result.insertedId);
     }
 
-    return result;
+    return mongodb_result;  // result from 'prisma' in v1
 
   } catch (error) {
   const err = error as Error;

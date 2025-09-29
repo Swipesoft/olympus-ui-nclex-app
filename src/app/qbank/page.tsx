@@ -1,14 +1,14 @@
 'use client';
 import { useState } from 'react';
 import { QuizResult } from '@/constant/types';
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 import QuizOnboardPage from '@/components/Quiz/quiz-onboard';
-import MCQPage from '@/components/Quiz/quiz-mcq';
+//import MCQPage from '@/components/Quiz/quiz-mcq';
 import QuizDashboardPage from '@/components/Quiz/quiz-dashboard';
 import MCQRationalePage from '@/components/Quiz/quiz-rationale';
 import MCQReviewPage from '@/components/Quiz/quiz-review';
 import NCLEXQuizBuilder from '@/components/QuizBuilder/quiz-builder';
-import { useItems } from '@/hooks/useItems';
+//import { useItems } from '@/hooks/useItems';
 import { useUser } from '@clerk/nextjs';
 import { generateQuiz } from '@/app/actions/build-items-actions';
 
@@ -25,18 +25,29 @@ interface QuizConfig {
   includeImages: boolean;
   includeAudio: boolean;
 }
+// server action return type Interface
+// NB: an alias type for nclexQuestion in  @src/constants/types.ts
+interface Question {
+  id: string;                // unique identifier for the question
+  question: string;          // the question text
+  options: string[];         // multiple choice options
+  correctAnswer: number[];   // index(es) of the correct option(s)
+  explanation: string;       // rationale or teaching point
+}
 
-type View = 'build' | 'home' | 'quiz' | 'dashboard' | 'review';
-
+// server action return type Interface
 interface QuizData {
-  questions: any[];
+  questions: Question[];
   config: QuizConfig;
 }
+
+type View = 'build' | 'home' | 'quiz' | 'dashboard' | 'review';
 
 export default function NCLEXQbankApp() {
   /* ------------ state ------------ */
   const [view, setView] = useState<View>('build');
   const [result, setResult] = useState<QuizResult | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isSaving, setIsSaving] = useState(false);
   const { user, isLoaded } = useUser();
   const [quizData, setQuizData] = useState<QuizData | null>(null);
@@ -125,9 +136,9 @@ export default function NCLEXQbankApp() {
         [...userSet].every((idx) => correctSet.has(idx));
 
       return {
-        questionId: q.id,
-        selectedAnswers: answers[i] ?? [],
-        correctAnswers: q.correctAnswer,
+        questionId: String(q.id),  // stringify all IDs // v1: number
+        selectedAnswer: answers[i] ?? [],
+        correctAnswer: q.correctAnswer,
         isCorrect,
       };
     });
@@ -135,6 +146,7 @@ export default function NCLEXQbankApp() {
     console.log("👤 Processed answers:", processed);
 
     const quizResult: QuizResult = {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       score: processed.filter((a: any) => a.isCorrect).length,
       totalQuestions: quizData.questions.length,
       timeTaken,

@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import { User, TrendingUp, Target, Award } from "lucide-react";
 import { QuizResult, PerformanceSummary } from "@/lib/adapters/sessionAdapter";
 import { ScoreTrend } from "@/lib/adapters/sessionAdapter";
-// Types
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 interface QuizResult0 {
   id: string;
   title: string;
@@ -12,7 +13,7 @@ interface QuizResult0 {
   total: number;
   date: string;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface PerformanceSummary0 {
   averageScore: number;
   questionsAttempted: number;
@@ -27,7 +28,7 @@ interface PerformanceSummary0 {
   //{ id: 4, title: "TypeScript Intro", score: 19, total: 20, date: "2023-05-22" },
   //{ id: 5, title: "Node.js Basics", score: 16, total: 20, date: "2023-05-25" },
 //];
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 const scoreTrend0: ScoreTrend[]= [
   { quiz: "Science", score: 30 },
   { quiz: "Math", score: 70 },
@@ -39,8 +40,7 @@ const scoreTrend0: ScoreTrend[]= [
   { quiz: "Biology", score: 88 },
 ];
 
-  
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const performanceSummaryo: PerformanceSummary = {
   averageScore: 0,
   questionsAttempted: 0,
@@ -133,9 +133,11 @@ export default function UserProfile({
             <div className="mb-4 md:mb-0">
               <h2 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, {fullName}!</h2>
               <p className="mb-4 opacity-90 text-sm md:text-base">Ready for your next challenge?</p>
+              <Link href="/qbank"> 
               <button className="bg-white text-indigo-600 font-semibold py-2 px-4 rounded-lg hover:bg-indigo-50 transition-colors text-sm md:text-base">
                 Start New Quiz
               </button>
+              </Link>
             </div>
             <div className="bg-indigo-400 p-3 rounded-full">
               <Target className="text-white" size={24} />

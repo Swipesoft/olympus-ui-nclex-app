@@ -3,8 +3,11 @@
 
 import { useQuery } from '@tanstack/react-query';
 
+
+
 type SyncUserResponse =
-  | { success: true; user: any } // Replace `any` with your actual user type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | { success: true; user: any }
   | { success: false; message?: string; error?: string };
 
 export const useSyncUser = () => {
