@@ -40,7 +40,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
 
     // First try to get unanswered questions
     const unansweredQuestions = await standaloneCollection
-      .aggregate([
+      .aggregate<DbStandaloneItem>([
         { $match: { _id: { $nin: answeredObjectIds } } },
         { $sample: { size: questionCount } }
       ])
@@ -52,7 +52,7 @@ export async function getUnansweredQuestions(clerkId: string, questionCount: num
       
       // Get additional questions (can include previously answered ones)
       const additionalQuestions = await standaloneCollection
-        .aggregate([
+        .aggregate<DbStandaloneItem>([
           { $match: { _id: { $nin: unansweredQuestions.map(q => q._id) } } },
           { $sample: { size: remaining } }
         ])

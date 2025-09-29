@@ -30,7 +30,7 @@ export default function MCQReviewPage({ nclexQuestions, result, onExit }: Props)
   const answer = result.answers[current];
   const progress = ((current + 1) / nclexQuestions.length) * 100;
 
-  const selectedSet = new Set(answer?.selectedAnswers ?? []);
+  const selectedSet = new Set(answer?.selectedAnswer ?? []);
   const correctSet = new Set(question.correctAnswer);
 
   /* ------------ helpers ------------ */

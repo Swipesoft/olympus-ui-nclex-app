@@ -1,13 +1,12 @@
 "use client"; 
 import React from "react"; 
-
 import Carousel from "react-multi-carousel"; 
 import "react-multi-carousel/lib/styles.css"; 
 import ReviewCard  from "./reviewCard"; 
 // Importing images for the review cards
-import c1 from "@/assets/images/c1.png"  
-import c2 from "@/assets/images/c2.png";
-import c3 from "@/assets/images/c3.png"; 
+//import c1 from "@/assets/images/c1.png"  
+//import c2 from "@/assets/images/c2.png";
+//import c3 from "@/assets/images/c3.png"; 
 
 const responsive = {
     desktop: {
@@ -39,9 +38,9 @@ const Slider = () => {
             autoPlaySpeed={4000}
             keyBoardControl={true} 
         >   
-            <ReviewCard image ={c1} name = "John Doe" role=" Founder Codex" />
-            <ReviewCard image = {c2} name = "Charlin Krish" role="FounderTechbox" />
-            <ReviewCard image = {c3} name = "Andy Lanes" role="Founder devbox" />
+            <ReviewCard image ="/c1.png" name = "John Doe" role=" Founder Codex" />
+            <ReviewCard image = "/c2.png" name = "Charlin Krish" role="FounderTechbox" />
+            <ReviewCard image = "/c3.png" name = "Andy Lanes" role="Founder devbox" />
         </Carousel>
         </>
     ); 

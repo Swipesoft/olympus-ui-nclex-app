@@ -18,7 +18,7 @@ import { useUser  } from '@clerk/nextjs';   // authentication hook
 type View = 'home' | 'quiz' | 'dashboard'|'review';
 
 export default function NCLEXQuizApp() {
-  /*---------- data fetch ------------ */
+  /*---------- data fetch ------------ */ 
   const { data: nclexQuestions = [], isLoading, isError } = useItems();
   /* ------------ state ------------ */
   const [view, setView] = useState<View>('home');
@@ -82,7 +82,8 @@ export default function NCLEXQuizApp() {
      every question can have 0..N selected options.
   ------------------------------------------------- */
   const handleSubmit = async (answers: number[][], timeTaken: number) => {
-    const processed = nclexQuestions.map((q, i) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const processed = nclexQuestions.map((q:any, i:any) => {
       const userSet = new Set(answers[i] ?? []);
       const correctSet = new Set(q.correctAnswer);
 

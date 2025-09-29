@@ -74,7 +74,7 @@ const About = ({imageOrder, textOrder, title, linkText}: Props) => {
                  data-aos-anchor-placement="top-center"
                 className={`${imageOrder}`}>
             
-                    <Image alt="Headphone" src={h1} width={380} height={380} />
+                    <Image alt="Headphone" src="/h1.png" width={380} height={380} />
                 </div>
             </div>
         </div>
