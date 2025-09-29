@@ -11,7 +11,8 @@ const dynamicsCollectionName = 'user_dynamics';
 
 async function calculateUserAccuracy(
   userId: string, 
-  db: any, // eslint-disable-next-line @typescript-eslint/no-explicit-any 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  db: any,  
   session: ClientSession | undefined
 ): Promise<string> {
   const pipeline = [

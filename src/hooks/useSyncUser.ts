@@ -4,8 +4,9 @@
 import { useQuery } from '@tanstack/react-query';
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type SyncUserResponse =
-  | { success: true; user: any } // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | { success: true; user: any }
   | { success: false; message?: string; error?: string };
 
 export const useSyncUser = () => {

@@ -1,6 +1,6 @@
 // app/api/items/route.ts
 import { NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
+//import clientPromise from '@/lib/mongodb';
 import {auth} from '@clerk/nextjs/server';
 //import { getItems } from '@/lib/db/items';
 import { getItems } from '@/lib/db/items';

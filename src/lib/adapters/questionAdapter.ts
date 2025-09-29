@@ -2,7 +2,8 @@ import { ObjectId } from "mongodb";
 
 
 export interface DbStandaloneItem {
-  _id: string | ObjectId | any; // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _id: string | ObjectId | any; 
   question_string: string;
   question_options: string[];
   verified_answer: number[];

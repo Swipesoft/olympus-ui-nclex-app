@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter, // eslint-disable-next-line @typescript-eslint/no-unused-vars 
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
