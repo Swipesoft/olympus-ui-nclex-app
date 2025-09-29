@@ -118,8 +118,8 @@ export default function QuizDashboardPage({
           <CardContent>
             <div className="space-y-4">
               {(nclexQuestions ?? []).map((q, i) => {
-                const userAnswers = result.answers[i]?.selectedAnswers || [];
-                const correctAnswers = result.answers[i]?.correctAnswers || [];
+                const userAnswers = result.answers[i]?.selectedAnswer|| [];
+                const correctAnswers = result.answers[i]?.correctAnswer || [];
                 const isCorrect = result.answers[i]?.isCorrect || false;
 
                 return (
