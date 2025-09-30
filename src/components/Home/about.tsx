@@ -30,7 +30,7 @@ const About = ({imageOrder, textOrder, title, linkText, items}: Props) => {
                     <div className="mt-8">
                         {items.map((item, idx) => (
                             <div key={idx} className="flex items-center mb-6 space-x-4">
-                                <div className="w-6 h-6 flex items-center justify-center flex-col rounded-full bg-pink-600 text-white">
+                                <div className="w-6 h-6 flex items-center justify-center flex-col rounded-full bg-indigo-600 text-white">
                                     <FaCheck />
                                 </div>
                                 <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
@@ -40,7 +40,7 @@ const About = ({imageOrder, textOrder, title, linkText, items}: Props) => {
                         ))}
 
                         {/* link */}
-                        <p className="font-semibold text-pink-600 cursor-pointer hover:underline w-fit">{linkText}</p>
+                        <p className="font-semibold text-indigo-600 cursor-pointer hover:underline w-fit">{linkText}</p>
                     </div>
                 </div>
                 {/* Image content */}

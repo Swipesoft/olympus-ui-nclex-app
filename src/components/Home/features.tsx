@@ -10,37 +10,37 @@ const Features = () => {
         {
             title: "Easy to Use",
             description:"Simple, intuitive user interface & website navigation",
-            icon: <MdOutlineTouchApp className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <MdOutlineTouchApp className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
         {
             title: "Personalised Learning",
             description:"Enable focused NCLEX practices on specific topics or areas of weakness.",
-            icon: <FaFingerprint className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <FaFingerprint className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
         {
             title: "Instant Feedback",
             description:"Real-time scoring with detailed rationale per question.",
-            icon: <HiOutlineChat className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <HiOutlineChat className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
         {
             title: "Performance Tracking",
             description:"Monitor performance across all NCLEX practice sessions.",
-            icon: <MdNotifications className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <MdNotifications className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
         {
             title: "24/7 Qbank Access",
             description:"Practice the NCLEX anywhere, anytime through your mobile or desktop device.",
-            icon: <IoWifiOutline className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <IoWifiOutline className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
         {
             title: "Time Management",
             description:"Time series knowledge assessment trends and tracing across sessions",
-            icon: <IoAppsOutline className="w-12 h-12 text-pink-600 mx-auto" />
+            icon: <IoAppsOutline className="w-12 h-12 text-indigo-600 mx-auto" />
 
         },
        
