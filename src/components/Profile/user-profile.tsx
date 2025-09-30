@@ -112,7 +112,7 @@ export default function UserProfile({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 font-serif">
       {/* Header */}
       <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-sm">
         <div className="flex items-center space-x-2">

@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { BookOpen, Clock, TrendingUp } from 'lucide-react';
 
-import { nclexQuestions } from '@/constant/constants'
+//import { nclexQuestions } from '@/constant/constants'
 
 
 export default function QuizOnboardPage({ onStart }: { onStart: () => void }) {
@@ -31,15 +31,15 @@ export default function QuizOnboardPage({ onStart }: { onStart: () => void }) {
           <CardHeader>
             <CardTitle className="text-2xl">Ready to Start?</CardTitle>
             <CardDescription>
-              This quiz contains {nclexQuestions.length} questions covering key
-              NCLEX topics
+              This practice session comprises Olympiad-level NCLEX questions
+              with detailed rationales to help you understand each answer. 
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <BookOpen className="h-5 w-5 text-blue-600" />
-                <span className="text-sm">Multiple choice questions</span>
+                <span className="text-sm">Standalone (MCQ, SATA) questions</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-5 w-5 text-blue-600" />
