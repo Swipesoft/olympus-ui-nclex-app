@@ -8,38 +8,38 @@ import { MdNotifications, MdOutlineTouchApp } from "react-icons/md";
 const Features = () => {
     const featuresData = [
         {
-            title: "Touch to buy",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "Easy to Use",
+            description:"Simple, intuitive user interface & website navigation",
             icon: <MdOutlineTouchApp className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
         {
-            title: "Secure Data",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "Personalised Learning",
+            description:"Enable focused NCLEX practices on specific topics or areas of weakness.",
             icon: <FaFingerprint className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
         {
-            title: "Instant Chat",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "Instant Feedback",
+            description:"Real-time scoring with detailed rationale per question.",
             icon: <HiOutlineChat className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
         {
-            title: "Live Notification",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "Performance Tracking",
+            description:"Monitor performance across all NCLEX practice sessions.",
             icon: <MdNotifications className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
         {
-            title: "Wifi Support",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "24/7 Qbank Access",
+            description:"Practice the NCLEX anywhere, anytime through your mobile or desktop device.",
             icon: <IoWifiOutline className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
         {
-            title: "App Watch",
-            description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis culpa expedita dignissimos.",
+            title: "Time Management",
+            description:"Time series knowledge assessment trends and tracing across sessions",
             icon: <IoAppsOutline className="w-12 h-12 text-pink-600 mx-auto" />
 
         },
