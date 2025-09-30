@@ -10,7 +10,7 @@ const Contact = () => {
       <span className="w-16 h-1 bg-indigo-600 mx-auto mt-3 block "></span>
 
       <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200 mt-4">
-        We'd love to hear from you! Whether you have a question about our services,
+        We love to hear from you! Whether you have a question about our services,
       </p>
       <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200">
          pricing, or anything else, our team is
