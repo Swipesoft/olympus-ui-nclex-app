@@ -7,9 +7,11 @@ const Footer = () => {
             <div className="w-[80%] mx-auto items-start grid-cols-1 sm:grid-cols-2 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
                 {/* list part */}
                 <div>
-                    <div className="text-white font-bold font-3xl ">LOGO</div>
+                    <div className="text-white font-bold font-3xl ">OLYMPUS NCLEX</div>
                     <p className="mt-5 font-semibold text-gray-300 text-sm">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas est dolorem amet porro minus mollitia veniam. Tempora, explicabo. Distinctio, vel?
+                        Olympus Quiz is a leading NCLEX practice platform trusted by over 10,000 nursing students worldwide. 
+                        Our mission is to provide high-quality, up-to-date practice questions and detailed explanations to help you 
+                        succeed on the NCLEX exam and kickstart your nursing career.
                     </p>
                     {/* social links */}
                     <div className="flex items-center text-white space-x-4 mt-6">
@@ -29,7 +31,7 @@ const Footer = () => {
                 </div>
                 {/* second part */}
                 <div className="space-y-5">
-                    <h1 className="text-lg text-white font-bold">Company</h1>
+                    <h1 className="text-lg text-white font-bold">Olympus NCLEX</h1>
                     <p className="text-gray-300 hover:text-gray-400 font-medium cursor-pointer text-sm">About Us</p>
                     <p className="text-gray-300 hover:text-gray-400 font-medium cursor-pointer text-sm">Services</p>
                     <p className="text-gray-300 hover:text-gray-400 font-medium cursor-pointer text-sm">Our Customers</p>
@@ -50,13 +52,13 @@ const Footer = () => {
                 <div className="space-y-5">
                     <h1 className="text-lg text-white font-bold">Get In Touch </h1>
                    <div className="mt-6">
-                    <h1 className="text-sm text-white">Our Mobile Number</h1>
-                    <h1 className="text-base font-bold text-white mt-1">+126678 20234</h1>
+                    <h1 className="text-sm text-white">Email</h1>
+                    <h1 className="text-base font-bold text-white mt-1">support@olympus-nclex.com</h1>
                    </div>
 
                    <div className="mt-6">
                     <h1 className="text-sm text-white">Our Address</h1>
-                    <h1 className="text-base font-bold text-white mt-1">Delhi, India</h1>
+                    <h1 className="text-base font-bold text-white mt-1">Carlifornia, USA</h1>
                    </div>
                    
                 </div>

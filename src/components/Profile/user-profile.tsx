@@ -115,12 +115,14 @@ export default function UserProfile({
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 font-serif">
       {/* Header */}
       <header className="flex items-center justify-between p-4 md:p-6 bg-white shadow-sm">
+        <Link href="/" className="flex items-center space-x-2"> 
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center">
             <span className="text-white font-bold text-xl">O</span>
           </div>
           <h1 className="text-xl md:text-2xl font-bold text-gray-800">Olympus</h1>
         </div>
+        </Link>
         <button className="p-2 rounded-full hover:bg-gray-100">
           <User className="text-gray-600" />
         </button>
