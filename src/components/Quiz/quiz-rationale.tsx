@@ -89,11 +89,11 @@ export default function MCQRationalePage({ nclexQuestions, onSubmit, onExit }: P
 
   /* ------------ render ------------ */
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-2xl mx-auto pt-8">
+    <div className="min-h-screen bg-white md:bg-gray-50 px-0.5 py-4 md:p-4 font-serif">
+      <div className="max-w-2xl mx-auto pt-4 md:pt-8">
         <header className="mb-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-lg md:text-2xl font-bold">
               Question {currentQuestion + 1} of {nclexQuestions.length}
             </h2>
             <Button variant="outline" onClick={onExit}>
@@ -108,12 +108,12 @@ export default function MCQRationalePage({ nclexQuestions, onSubmit, onExit }: P
           </div>
         </header>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">{question.question}</CardTitle>
+        <Card className="border-0 md:border shadow-none md:shadow-sm">
+          <CardHeader className="px-2 pt-4 pb-2 md:px-6 md:pt-6">
+            <CardTitle className="text-sm md:text-lg leading-relaxed">{question.question}</CardTitle>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="px-2 py-3 md:px-6 md:py-6">
             {isMulti ? (
               <div className="space-y-3">
                 {question.options.map((opt: string, i: number) => (
@@ -149,13 +149,13 @@ export default function MCQRationalePage({ nclexQuestions, onSubmit, onExit }: P
 
             {showExplanation && (
               <div className="mt-4 pt-4 border-t">
-                <h4 className="font-semibold mb-1">Rationale</h4>
+                <h4 className="font-semibold mb-1 text-sm md:text-base">Rationale</h4>
                 <MarkdownRenderer content={question.explanation} />
               </div>
             )}
           </CardContent>
 
-          <CardFooter className="flex justify-end">
+          <CardFooter className="flex justify-end px-2 pb-4 md:px-6 md:pb-6">
             <Button
               onClick={nextQuestion}
               disabled={!selectedAnswers[currentQuestion] || selectedAnswers[currentQuestion].length === 0}

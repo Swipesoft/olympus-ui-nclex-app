@@ -4,28 +4,28 @@
 export const navLinks = [
     {
         id: "1",
-        url:"#",
+        url:"/",
         label: "Home"
     },
     {
         id: "2",
         url:"/sign-in",
-        label: "Clerk-sign-in"
+        label: "Login"
     },
     {
         id: "3",
         url:"/sign-up",
-        label: "Clerk-sign-up"
+        label: "Register"
     },
     {
         id: "4",
-        url:"/quiz",
+        url:"/qbank",
         label: "NCLEX Q-bank"
     },
     {
         id: "5",
-        url:"#",
-        label: "Testimonial"
+        url:"/profile",
+        label: "Performance Analytics"
     },
     {
         id: "6",

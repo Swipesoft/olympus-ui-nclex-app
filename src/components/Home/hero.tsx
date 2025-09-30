@@ -32,7 +32,7 @@ const HeroBanner = ()=> {
           <div className="mt-8 flex flex-col sm:flex-row w-fit sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
             {/* 1st Button */}
             <Link 
-              href="/login"
+              href="/sign-in"
               className="relative overflow-hidden px-10 py-3 font-medium text-white transition duration-300 bg-blue-600 rounded-md hover:bg-blue-500 ease"
             >
               <span className="absolute bottom-0 left-0 h-full -ml-2">
@@ -67,7 +67,7 @@ const HeroBanner = ()=> {
             </Link >
              {/* 2nd Button */}
              <Link 
-              href="/register"
+              href="/sign-up"
               className="relative overflow-hidden px-10 py-3 font-medium text-white transition duration-300 bg-green-600 rounded-md hover:bg-green-500 ease"
             >
               <span className="absolute bottom-0 left-0 h-full -ml-2">
@@ -104,7 +104,7 @@ const HeroBanner = ()=> {
         </div>
         {/* Image Content */}
         <div data-aos="zoom-in" data-aos-delay="150" className="mx-auto hidden xl:block">
-            <Image src="/nurse1b.png" alt="Banner" width={1200} height={1200} />
+            <Image src="/SOTA_VOVA3B.png" alt="Banner" width={1200} height={1200} />
         </div>
       </div>
     </div>
@@ -112,4 +112,5 @@ const HeroBanner = ()=> {
 };
 
 export default HeroBanner;
-// static-olympus-design/src/assets/images/hero.png
+// static-olympus-design/src/assets/images/hero.png 
+// trigger a vercel redeploy when this file is changed

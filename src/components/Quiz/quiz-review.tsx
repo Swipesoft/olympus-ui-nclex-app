@@ -43,14 +43,14 @@ export default function MCQReviewPage({ nclexQuestions, result, onExit }: Props)
 
   /* ------------ render ------------ */
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-2xl mx-auto pt-8">
-        <header className="mb-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold">
+    <div className="min-h-screen bg-white md:bg-gray-50 px-0.5 py-4 md:p-4 font-serif">
+      <div className="max-w-2xl mx-auto pt-4 md:pt-8">
+        <header className="mb-4 px-2 md:px-0 md:mb-6">
+          <div className="flex justify-between items-center mb-3 md:mb-4">
+            <h2 className="text-base md:text-2xl font-bold">
               Review {current + 1} / {nclexQuestions.length}
             </h2>
-            <Button variant="outline" onClick={onExit}>
+            <Button variant="outline" size="sm" className="text-xs md:text-sm" onClick={onExit}>
               Exit Review
             </Button>
           </div>
@@ -62,12 +62,12 @@ export default function MCQReviewPage({ nclexQuestions, result, onExit }: Props)
           </div>
         </header>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">{question.question}</CardTitle>
+        <Card className="border-0 md:border shadow-none md:shadow-sm">
+          <CardHeader className="px-2 pt-4 pb-2 md:px-6 md:pt-6">
+            <CardTitle className="text-sm md:text-lg leading-relaxed">{question.question}</CardTitle>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="px-2 py-3 md:px-6 md:py-6">
             {/* OPTIONS – read-only checkboxes */}
             <div className="space-y-3">
               {question.options.map((opt, i) => {
@@ -99,12 +99,12 @@ export default function MCQReviewPage({ nclexQuestions, result, onExit }: Props)
 
             {/* EXPLANATION */}
             <div className="mt-6 pt-4 border-t">
-              <h4 className="font-semibold mb-1">Rationale</h4>
+              <h4 className="font-semibold mb-1 text-sm md:text-base">Rationale</h4>
               <MarkdownRenderer content={question.explanation} />
             </div>
           </CardContent>
 
-          <CardFooter className="flex justify-between">
+          <CardFooter className="flex justify-between px-2 pb-4 md:px-6 md:pb-6">
             <Button onClick={prev} disabled={current === 0}>
               Previous
             </Button>

@@ -10,10 +10,14 @@ const Contact = () => {
       <span className="w-16 h-1 bg-indigo-600 mx-auto mt-3 block "></span>
 
       <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200 mt-4">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit Vitae fugit
+        We love to hear from you! Whether you have a question about our services,
       </p>
       <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200">
-        placeat hic dolores laboriosam ab inventore, perferendis illo.
+         pricing, or anything else, our team is
+        ready to answer all your questions.
+      </p>
+      <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200">
+         Email us at <strong>support@olympus-nclex.com</strong>
       </p>
       <div className="w-[90%] sm:w-[80%] lg:w-[60%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-center mt-16">
         <div className="h-full">
