@@ -31,7 +31,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className={`${navBg ? "bg-pink-700 shadow-md" : "fixed"} transition-all duration-200 h-[12vh] z-[100] fixed w-full`}>
+      <div className={`${navBg ? "bg-indigo-700 shadow-md" : "fixed"} transition-all duration-200 h-[12vh] z-[100] fixed w-full`}>
         <div className="flex items-center h-full justify-between sm:w-[80%] w-[90%] mx-auto">
           {/* Logo */}
           <div className="text-white font-bold text-2xl sm:text-3xl">Olympus NCLEX</div>

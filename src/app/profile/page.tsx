@@ -45,7 +45,7 @@ export default function ProfilePageContainer() {
 
     const fullName =
         syncData?.success && syncData.user
-            ? `${capitalize(syncData.user.firstName ?? 'Boo')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
+            ? `${capitalize(syncData.user.firstName ?? '')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
     : '';
 
     //console.log(`sync user: ${syncData.user.firstName}`); 

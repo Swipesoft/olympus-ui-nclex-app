@@ -11,7 +11,7 @@ import Link  from "next/link";
 const HeroBanner = ()=> {
     //const imageSrc = heroImage || hero; // Use provided image or default to hero.png
   return (
-    <div className="relative w-full h-screen flex justify-center flex-col bg-pink-800 bg_clip">
+    <div className="relative w-full h-screen flex justify-center flex-col bg-indigo-800 bg_clip">
       <div className="w-[90%] md:w-[80%] mx-auto items-center grid grid-cols-1 xl:grid-cols-2 gaps-10">
         {/* Text Content */}
         <div data-aos="fade-up">

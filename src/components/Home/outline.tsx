@@ -22,7 +22,19 @@ const initAos = async() => {
 }
 initAos();
 }, [])
+const features_v1 = [
+    "Detailed, step-by-step rationale for every NCLEX question", 
+    "Proven strategies to help you ace the NCLEX on your first try", 
+    "Contrast each answer choice to improve NCLEX content mastery", 
+    "Trusted, evidence-based nursing knowledge at your fingertips"
+]
 
+const features_v2 = [
+  "NCLEX practice items reviewed & compiled by experts", 
+  "Olympiad-level question difficulty aiming to improve clinical judgement", 
+  "Diversified standalone MCQ & SATA questions on multiple NCLEX topics", 
+  "Personalized performance tracking and analytics dashboard"
+]
   return (
     <div className="overflow-hidden">
       <HeroBanner />
@@ -31,13 +43,15 @@ initAos();
         textOrder="lg:order-1"
         imageOrder="lg:order-2"
         linkText="Learn More"
-        title="Pure sound, no added noise"
+        title="Why Choose Our QBank?"
+        items={features_v1}
       />
       <About
         textOrder="lg:order-2"
         imageOrder="lg:order-1"
-        linkText="Shop Now"
-        title="Capture pure sound with the 70mm HD Driver"
+        linkText="Practice Now"
+        title="Personalised, Adaptive NCLEX Practice"
+        items={features_v2}
       />
       <Review />
       <Contact />

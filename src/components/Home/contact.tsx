@@ -7,7 +7,7 @@ const Contact = () => {
       <h1 className="text-2xl sm:text-3xl text-center text-gray-800 dark:text-white font-bold">
         Get In Touch
       </h1>
-      <span className="w-16 h-1 bg-pink-600 mx-auto mt-3 block "></span>
+      <span className="w-16 h-1 bg-indigo-600 mx-auto mt-3 block "></span>
 
       <p className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-200 mt-4">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit Vitae fugit
@@ -37,7 +37,7 @@ const Contact = () => {
             <textarea placeholder="Message" className="w-full block text-black h-full bg-gray-200 shadow-md outline-none px-6 py-3.5 rounded-md mb-4"></textarea>
         </div>
       </div>
-      <button className="mt-8 flex items-center gap-2 bg-pink-800 text-white px-6 py-4 rounded-md shadow-md hover:bg-pink-900 transition mx-auto cursor-pointer">
+      <button className="mt-8 flex items-center gap-2 bg-indigo-800 text-white px-6 py-4 rounded-md shadow-md hover:bg-pink-900 transition mx-auto cursor-pointer">
         <FaPaperPlane /> Send Message
       </button>
     </div>
