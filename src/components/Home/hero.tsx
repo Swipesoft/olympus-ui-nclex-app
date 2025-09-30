@@ -104,7 +104,7 @@ const HeroBanner = ()=> {
         </div>
         {/* Image Content */}
         <div data-aos="zoom-in" data-aos-delay="150" className="mx-auto hidden xl:block">
-            <Image src="/nurse1b.png" alt="Banner" width={1200} height={1200} />
+            <Image src="/SOTA_VOVA3B.png" alt="Banner" width={1200} height={1200} />
         </div>
       </div>
     </div>
