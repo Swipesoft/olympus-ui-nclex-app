@@ -43,10 +43,14 @@ export default function ProfilePageContainer() {
     const switchToReview = () => setView('review'); // function to switch to review past quizzes/sessions
     const switchToProfile = () => setView('profile'); // function to switch back to profile view 
 
-    const fullName =
+    let fullName =
         syncData?.success && syncData.user
             ? `${capitalize(syncData.user.firstName ?? '')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
-    : 'NCLEX Olympian'; // default name if syncData is not available
+    : ''; // default name if syncData is not available
+
+    if (!fullName){
+        fullName = 'NCLEX Olympian'; // fallback name
+    }
 
     //console.log(`sync user: ${syncData.user.firstName}`); 
 
