@@ -22,7 +22,7 @@ export default function ProfilePageContainer() {
 
     // Build full name from syncData API response loaded JSON object if available
     function capitalize(word: string) {
-        return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '';
+        return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : 'NCLEX Olympian';
     }
     
 
