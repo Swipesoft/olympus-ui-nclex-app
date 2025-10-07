@@ -22,7 +22,7 @@ export default function ProfilePageContainer() {
 
     // Build full name from syncData API response loaded JSON object if available
     function capitalize(word: string) {
-        return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : 'NCLEX Olympian';
+        return word ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : '';
     }
     
 
@@ -45,7 +45,7 @@ export default function ProfilePageContainer() {
 
     const fullName =
         syncData?.success && syncData.user
-            ? `${capitalize(syncData.user.firstName ?? '')} ${capitalize(syncData.user.lastName ?? '')}`.trim()
+            ? `${capitalize(syncData.user.firstName ?? 'NCLEX')} ${capitalize(syncData.user.lastName ?? 'Olympian')}`.trim()
     : '';
 
     //console.log(`sync user: ${syncData.user.firstName}`); 
